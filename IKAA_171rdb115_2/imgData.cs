@@ -181,7 +181,7 @@ namespace IKAA_171rdb115_2
                                     line[3 * x + 1] = img[x, y].cmykToRGB(0, 0, 0, imgcmyk[x, y].K).G; //green
                                     line[3 * x + 2] = img[x, y].cmykToRGB(0, 0, 0, imgcmyk[x, y].K).R; //red
                                     break;
-                                }//black
+                                }//key
                             case "YUV":
                                 {
                                     line[3 * x] = img[x, y].yuvToRGB(imgyuv[x, y].Yy, imgyuv[x, y].U, imgyuv[x, y].Vv).B; //blue

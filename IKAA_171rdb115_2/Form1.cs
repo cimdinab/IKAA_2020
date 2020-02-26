@@ -130,7 +130,7 @@ namespace IKAA_171rdb115_2
             radioButton4.Text = "Cyan";
             radioButton5.Text = "Magenta";
             radioButton6.Text = "Yellow";
-            radioButton7.Text = "Black";
+            radioButton7.Text = "Key";
             radioButton7.Visible = true;
             if (imgData.img != null)
             {
