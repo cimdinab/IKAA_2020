@@ -53,8 +53,10 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="imgData.cs" />
+    <Compile Include="PixelClassCMYK.cs" />
     <Compile Include="PixelClassHSV.cs" />
     <Compile Include="PixelClassRGB.cs" />
+    <Compile Include="PixelClassYUV.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
