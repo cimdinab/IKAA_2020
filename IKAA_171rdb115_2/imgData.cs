@@ -72,6 +72,81 @@ namespace IKAA_171rdb115_2
             Console.WriteLine("Image Read time: " + elapsedMs);
         }
 
+        public void contrastByHistogram(string mode)
+        {
+            int[] hRGBI = new int[257];
+            if (mode == "R") { hRGBI = hist2.hR; }
+            else if (mode == "G") { hRGBI = hist2.hG; }
+            else if (mode == "B") { hRGBI = hist2.hB; }
+            else if (mode == "I") { hRGBI = hist2.hI; }
+
+            int dBegin = hist2.FindFirst(hRGBI, 0);
+            int dEnd = hist2.FindLast(hRGBI, 0);
+            int dOriginal = dEnd - dBegin;
+            int dDesired = 255;
+            double k = dDesired / (double)dOriginal;
+            for (int x = 0; x < imgnew.GetLength(0); x++)
+            {
+                for (int y = 0; y < imgnew.GetLength(1); y++)
+                {
+                    if (mode == "I")
+                    {
+                        imgnew[x, y].I = (byte)Math.Min(255, Math.Max(0, k * (img[x, y].I - dBegin)));
+                    }
+                    else if (mode == "R")
+                    {
+                        imgnew[x, y].R = (byte)Math.Min(255, Math.Max(0, k * (img[x, y].R - dBegin)));
+                    }
+                    else if (mode == "G")
+                    {
+                        imgnew[x, y].G = (byte)Math.Min(255, Math.Max(0, k * (img[x, y].G - dBegin)));
+                    }
+                    else if (mode == "B")
+                    {
+                        imgnew[x, y].B = (byte)Math.Min(255, Math.Max(0, k * (img[x, y].B - dBegin)));
+                    }
+                }
+            }
+
+        }
+
+        public void normalizeHistogram(string mode, int value)
+        {
+            int[] hRGBI = new int[257];
+            if (mode == "R") { hRGBI = hist2.hR; }
+            else if (mode == "G") { hRGBI = hist2.hG; }
+            else if (mode == "B") { hRGBI = hist2.hB; }
+            else if (mode == "I") { hRGBI = hist2.hI; }
+            int dDesired = 255;
+            int dBegin = hist2.FindFirst(hRGBI, value);
+            int dEnd = hist2.FindLast(hRGBI, value);
+            int dOriginal = dEnd - dBegin;
+            double k = dDesired / (double) dOriginal;
+            for (int x = 0; x < imgnew.GetLength(0); x++)
+            {
+                for (int y = 0; y < imgnew.GetLength(1); y++)
+                {
+                    if (mode == "I")
+                    {
+                        imgnew[x, y].I = (byte)Math.Min(255, Math.Max(0, k * (img[x, y].I - dBegin)));
+                    }
+                    else if (mode == "R")
+                    {
+                        imgnew[x, y].R = (byte)Math.Min(255, Math.Max(0, k * (img[x, y].R - dBegin)));
+                    }
+                    else if (mode == "G")
+                    {
+                        imgnew[x, y].G = (byte)Math.Min(255, Math.Max(0, k * (img[x, y].G - dBegin)));
+                    }
+                    else if (mode == "B")
+                    {
+                        imgnew[x, y].B = (byte)Math.Min(255, Math.Max(0, k * (img[x, y].B - dBegin)));
+                    }
+                }
+            }
+
+        }
+
         public Bitmap drawImage(string mode)
         {
             var watchdraw = System.Diagnostics.Stopwatch.StartNew();
@@ -141,6 +216,13 @@ namespace IKAA_171rdb115_2
                                     imgnew[x, y].I = Convert.ToByte(0.0722f * imgnew[x, y].B + 0.7152f * imgnew[x, y].G + 0.2126f * imgnew[x, y].R);
                                     break;
                                 } //grayscale
+                            case "Stretch":
+                                {
+                                    line[3 * x] = imgnew[x, y].B; //blue
+                                    line[3 * x + 1] = imgnew[x, y].G; //green
+                                    line[3 * x + 2] = imgnew[x, y].R; //red
+                                    break;
+                                } //rgb
                             case "Invert":
                                 {
                                     line[3 * x] = Convert.ToByte(255 - img[x, y].B); //blue

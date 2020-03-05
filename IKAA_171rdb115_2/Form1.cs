@@ -12,7 +12,7 @@ namespace IKAA_171rdb115_2
             InitializeComponent();
         }
 
-        private void openButton_Click(object sender, EventArgs e)
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -279,12 +279,6 @@ namespace IKAA_171rdb115_2
             }
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
-        {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                pictureBox2.Image.Save(saveFileDialog1.FileName);
-        }
-
         private void invertButton_Click(object sender, EventArgs e)
         {
 
@@ -297,6 +291,49 @@ namespace IKAA_171rdb115_2
         {
             colorDialog1.ShowDialog();
             colorButton.BackColor = colorDialog1.Color;
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                pictureBox2.Image.Save(saveFileDialog1.FileName);
+        }
+
+        private void stretchingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                imgData.contrastByHistogram("R");
+                imgData.contrastByHistogram("G");
+                imgData.contrastByHistogram("B");
+                imgData.contrastByHistogram("I");
+                pictureBox2.Image = imgData.drawImage("Stretch");
+                imgData.hist2.drawHistogram(chart2, "RGB");
+                radioButton1.Checked = true;
+                radioButton3.Checked = true;
+            }
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            toolTip1.SetToolTip(trackBar1, trackBar1.Value.ToString() + "%");
+        }
+
+        private void normalizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                imgData.normalizeHistogram("R", trackBar1.Value);
+                imgData.normalizeHistogram("G", trackBar1.Value);
+                imgData.normalizeHistogram("B", trackBar1.Value);
+                imgData.normalizeHistogram("I", trackBar1.Value);
+                pictureBox2.Image = imgData.drawImage("Stretch");
+                imgData.hist2.drawHistogram(chart2, "RGB");
+                radioButton1.Checked = true;
+                radioButton3.Checked = true;
+            }
         }
     }
 }

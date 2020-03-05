@@ -34,6 +34,20 @@ namespace IKAA_171rdb115_2
             hV = new int[257];
         }
 
+        public int FindFirst(int [] H, int x)
+        { //meklējam histogrammas sākumu
+            int i = 0;
+            while (H[i] <= x) { i++; }
+            return i;
+        }
+
+        public int FindLast(int [] H, int x)
+        { //meklējam histogrammas galapunktu
+            int i = 255;
+            while (H[i] <=x) { i--; }
+            return i;
+        }
+
         public void eraseHistogram()
         {
             for (int i = 0; i < 256; i++)
