@@ -9,21 +9,27 @@ namespace IKAA_171rdb115_2
     {
         public PixelClassRGB[,] img;
         public PixelClassHSV[,] imghsv;
+<<<<<<< Updated upstream
+=======
         public PixelClassCMYK[,] imgcmyk;
         public PixelClassYUV[,] imgyuv;
         public PixelClassRGB[,] imgnew;
         public Histogram hist1; //original image
         public Histogram hist2; //edited image
+>>>>>>> Stashed changes
 
         ~imgData()
         {
             img = null;
             imghsv = null;
+<<<<<<< Updated upstream
+=======
             imgcmyk = null;
             imgyuv = null;
             imgnew = null;
             hist1 = null;
             hist2 = null;
+>>>>>>> Stashed changes
         }
         public void readImage(Bitmap bmp)
         {
@@ -31,10 +37,13 @@ namespace IKAA_171rdb115_2
             img = new PixelClassRGB[bmp.Width, bmp.Height];
             imgnew = new PixelClassRGB[bmp.Width, bmp.Height];
             imghsv = new PixelClassHSV[bmp.Width, bmp.Height];
+<<<<<<< Updated upstream
+=======
             imgcmyk = new PixelClassCMYK[bmp.Width, bmp.Height];
             imgyuv = new PixelClassYUV[bmp.Width, bmp.Height];
             hist1 = new Histogram();
             hist2 = new Histogram();
+>>>>>>> Stashed changes
             //nolasām datus no attēla
             var bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, bmp.PixelFormat);
             //nolasām atmiņā datus par attēlu
@@ -60,8 +69,6 @@ namespace IKAA_171rdb115_2
                     img[x, y] = new PixelClassRGB(line[pixelComponents * x + 2], line[pixelComponents * x + 1], line[pixelComponents * x]); //BGR
                     imgnew[x, y] = new PixelClassRGB(line[pixelComponents * x + 2], line[pixelComponents * x + 1], line[pixelComponents * x]); //BGR
                     imghsv[x, y] = new PixelClassHSV(img[x, y].R, img[x, y].G, img[x, y].B);
-                    imgcmyk[x, y] = new PixelClassCMYK(img[x, y].R, img[x, y].G, img[x, y].B);
-                    imgyuv[x, y] = new PixelClassYUV(img[x, y].R, img[x, y].G, img[x, y].B);
                 }
             }
             bmp.UnlockBits(bmpData); //nolasīšanas rezultāts
@@ -171,74 +178,11 @@ namespace IKAA_171rdb115_2
                                 } //saturation
                             case "V":
                                 {
-                                    line[3 * x] = imghsv[x, y].V;
-                                    line[3 * x + 1] = imghsv[x, y].V;
-                                    line[3 * x + 2] = imghsv[x, y].V;
+                                    line[3 * x] = img[x, y].hsvToRGB(imghsv[x, y].H, 255, 255).B; //blue
+                                    line[3 * x + 1] = img[x, y].hsvToRGB(imghsv[x, y].H, 255, 255).G; //green
+                                    line[3 * x + 2] = img[x, y].hsvToRGB(imghsv[x, y].H, 255, 255).R; //red
                                     break;
                                 } //value
-                            case "CMYK":
-                                {
-                                    line[3 * x] = img[x, y].cmykToRGB(imgcmyk[x, y].C, imgcmyk[x, y].M, imgcmyk[x, y].Y, imgcmyk[x, y].K).B; //blue
-                                    line[3 * x + 1] = img[x, y].cmykToRGB(imgcmyk[x, y].C, imgcmyk[x, y].M, imgcmyk[x, y].Y, imgcmyk[x, y].K).G; //green
-                                    line[3 * x + 2] = img[x, y].cmykToRGB(imgcmyk[x, y].C, imgcmyk[x, y].M, imgcmyk[x, y].Y, imgcmyk[x, y].K).R; //red
-                                    break;
-                                }//cmyk
-                            case "C":
-                                {
-                                    line[3 * x] = img[x, y].cmykToRGB(imgcmyk[x, y].C, 0, 0, 0).B; //blue
-                                    line[3 * x + 1] = img[x, y].cmykToRGB(imgcmyk[x, y].C, 0, 0, 0).G; //green
-                                    line[3 * x + 2] = img[x, y].cmykToRGB(imgcmyk[x, y].C, 0, 0, 0).R; //red
-                                    break;
-                                }//cyan
-                            case "M":
-                                {
-                                    line[3 * x] = img[x, y].cmykToRGB(0, imgcmyk[x, y].M, 0, 0).B; //blue
-                                    line[3 * x + 1] = img[x, y].cmykToRGB(0, imgcmyk[x, y].M, 0, 0).G; //green
-                                    line[3 * x + 2] = img[x, y].cmykToRGB(0, imgcmyk[x, y].M, 0, 0).R; //red
-                                    break;
-                                }//magenta
-                            case "Y":
-                                {
-                                    line[3 * x] = img[x, y].cmykToRGB(0, 0, imgcmyk[x, y].Y, 0).B; //blue
-                                    line[3 * x + 1] = img[x, y].cmykToRGB(0, 0, imgcmyk[x, y].Y, 0).G; //green
-                                    line[3 * x + 2] = img[x, y].cmykToRGB(0, 0, imgcmyk[x, y].Y, 0).R; //red
-                                    break;
-                                }//yellow
-                            case "K":
-                                {
-                                    line[3 * x] = img[x, y].cmykToRGB(0, 0, 0, imgcmyk[x, y].K).B; //blue
-                                    line[3 * x + 1] = img[x, y].cmykToRGB(0, 0, 0, imgcmyk[x, y].K).G; //green
-                                    line[3 * x + 2] = img[x, y].cmykToRGB(0, 0, 0, imgcmyk[x, y].K).R; //red
-                                    break;
-                                }//key
-                            case "YUV":
-                                {
-                                    line[3 * x] = img[x, y].yuvToRGB(imgyuv[x, y].Yy, imgyuv[x, y].U, imgyuv[x, y].Vv).B; //blue
-                                    line[3 * x + 1] = img[x, y].yuvToRGB(imgyuv[x, y].Yy, imgyuv[x, y].U, imgyuv[x, y].Vv).G; //green
-                                    line[3 * x + 2] = img[x, y].yuvToRGB(imgyuv[x, y].Yy, imgyuv[x, y].U, imgyuv[x, y].Vv).R; //red
-                                    break;
-                                }//yuv
-                            case "Yy":
-                                {
-                                    line[3 * x] = img[x, y].yuvToRGB(imgyuv[x, y].Yy, 128, 128).B; //blue
-                                    line[3 * x + 1] = img[x, y].yuvToRGB(imgyuv[x, y].Yy, 128, 128).G; //green
-                                    line[3 * x + 2] = img[x, y].yuvToRGB(imgyuv[x, y].Yy, 128, 128).R; //red
-                                    break;
-                                }
-                            case "U":
-                                {
-                                    line[3 * x] = img[x, y].yuvToRGB(128, imgyuv[x, y].U, 128).B; //blue
-                                    line[3 * x + 1] = img[x, y].yuvToRGB(128, imgyuv[x, y].U, 128).G; //green
-                                    line[3 * x + 2] = img[x, y].yuvToRGB(128, imgyuv[x, y].U, 128).R; //red
-                                    break;
-                                }
-                            case "Vv":
-                                {
-                                    line[3 * x] = img[x, y].yuvToRGB(128, 128, imgyuv[x, y].Vv).B; //blue
-                                    line[3 * x + 1] = img[x, y].yuvToRGB(128, 128, imgyuv[x, y].Vv).G; //green
-                                    line[3 * x + 2] = img[x, y].yuvToRGB(128, 128, imgyuv[x, y].Vv).R; //red
-                                    break;
-                                }
                         } //switch
                     }
                     ptr = bmpData.Scan0 + y * bmpData.Stride;
@@ -259,6 +203,23 @@ namespace IKAA_171rdb115_2
                 return null;
             }
         }
-    }
-}
 
+        public void invertPixels()
+        {
+            if (img != null)
+            {
+                for (int x = 0; x < img.GetLength(0); x++)
+                {
+                    for (int y = 0; y < img.GetLength(1); y++)
+                    {
+                        //ierobežojam krāsu diapazonu 0..255
+                        img[x, y].R = Convert.ToByte(255 - img[x, y].R);
+                        img[x, y].G = Convert.ToByte(255 - img[x, y].G);
+                        img[x, y].B = Convert.ToByte(255 - img[x, y].B);
+                    }
+                }
+            }
+        }
+    }
+
+}
