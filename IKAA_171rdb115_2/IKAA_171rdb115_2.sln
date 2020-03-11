@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKAA_171rdb115_2", "IKAA_171rdb115_2\IKAA_171rdb115_2.csproj", "{D632285D-1FAF-4751-B4CD-CB6D8492BB5C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D632285D-1FAF-4751-B4CD-CB6D8492BB5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D632285D-1FAF-4751-B4CD-CB6D8492BB5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D632285D-1FAF-4751-B4CD-CB6D8492BB5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D632285D-1FAF-4751-B4CD-CB6D8492BB5C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6DEF4AD-F445-4016-883A-D07819A26B60}
+	EndGlobalSection
+EndGlobal

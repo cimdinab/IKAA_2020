@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging; //nolasām pixeļa formātu
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace IKAA_171rdb115_2
@@ -12,7 +14,7 @@ namespace IKAA_171rdb115_2
             InitializeComponent();
         }
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -27,6 +29,9 @@ namespace IKAA_171rdb115_2
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
+<<<<<<< Updated upstream
+            if (pictureBox2.Image != null)
+=======
             if (pictureBox1.Image != null)
             {
                 Bitmap bmpi = pictureBox1.Image as Bitmap;
@@ -51,8 +56,10 @@ namespace IKAA_171rdb115_2
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             if (pictureBox1.Image != null)
+>>>>>>> Stashed changes
             {
                 Bitmap bmpo = pictureBox1.Image as Bitmap;
+                Bitmap bmpi = pictureBox2.Image as Bitmap;
                 double kX = (double)pictureBox1.Image.Width / pictureBox1.Width;
                 double kY = (double)pictureBox1.Image.Height / pictureBox1.Height;
                 double k = Math.Max(kX, kY);
@@ -63,6 +70,19 @@ namespace IKAA_171rdb115_2
                 double kx = Math.Round(e.X * k - nobideX);
                 double ky = Math.Round(e.Y * k - nobideY);
                 //izvadam label teksta laukā konvērtētu vērtību no vesela skaitļa uz tekstu
+<<<<<<< Updated upstream
+                Color colororg = bmpo.GetPixel(Convert.ToInt32(kx), Convert.ToInt32(ky));
+                Color colorinv = bmpi.GetPixel(Convert.ToInt32(kx), Convert.ToInt32(ky));
+                textBox1.BackColor = colororg;
+                textBox2.BackColor = colorinv;
+                label1.Text = "Krāsa oriģinālajā attēlā \n" + Convert.ToString(colororg);
+                label2.Text = "Krāsa pārveidotajā attēlā \n" + Convert.ToString(colorinv);
+                colorDialog1.ShowDialog();
+                bmpi.SetPixel(Convert.ToInt32(kx), Convert.ToInt32(ky), colorDialog1.Color);
+                textBox3.BackColor = colorDialog1.Color;
+                label3.Text = "Izvēlētā krāsa \n" + Convert.ToString(colorDialog1.Color);
+                pictureBox2.Refresh();
+=======
                 try
                 {
                     Color colororg = bmpo.GetPixel(Convert.ToInt32(kx), Convert.ToInt32(ky));
@@ -77,8 +97,8 @@ namespace IKAA_171rdb115_2
                     label5.Text = "x, y = " + Convert.ToString(kx) + "," + Convert.ToString(ky);
                     label6.Text = "YUV \nY = " + Convert.ToInt32(yuvPixel.Yy) + ", U = " + Convert.ToInt32(yuvPixel.U) + ", V = " + Convert.ToInt32(yuvPixel.Vv);
                 }
-                catch (Exception) { label5.Text = "Can't read coordinates outside image"; }
-
+                catch(Exception) { label5.Text = "Can't read coordinates outside image"; }
+                
 
             }
         }
@@ -103,6 +123,7 @@ namespace IKAA_171rdb115_2
                     pictureBox2.Refresh();
                 }
                 catch (Exception) { label5.Text = "Can't color pixel outside image"; }
+>>>>>>> Stashed changes
             }
         }
 
@@ -112,7 +133,6 @@ namespace IKAA_171rdb115_2
             radioButton4.Text = "Red";
             radioButton5.Text = "Green";
             radioButton6.Text = "Blue";
-            radioButton7.Text = "Intensity";
             radioButton7.Visible = true; //Intensity
             if (imgData.img != null)
             {
@@ -135,33 +155,6 @@ namespace IKAA_171rdb115_2
             }
         }
 
-        private void radioButton8_CheckedChanged(object sender, EventArgs e)
-        {   //CMYK
-            radioButton3.Checked = true; //Composite
-            radioButton4.Text = "Cyan";
-            radioButton5.Text = "Magenta";
-            radioButton6.Text = "Yellow";
-            radioButton7.Text = "Key";
-            radioButton7.Visible = true;
-            if (imgData.img != null)
-            {
-                pictureBox2.Image = imgData.drawImage("CMYK");
-            }
-        }
-
-        private void radioButton9_CheckedChanged(object sender, EventArgs e)
-        {
-            radioButton3.Checked = true; //Composite
-            radioButton4.Text = "Luminance (Y)";
-            radioButton5.Text = "Blue-luminance (U)";
-            radioButton6.Text = "Red-luminance (V)";
-            radioButton7.Visible = false;
-            if (imgData.img != null)
-            {
-                pictureBox2.Image = imgData.drawImage("YUV");
-            }
-        }
-
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             if (imgData.img != null)
@@ -171,6 +164,8 @@ namespace IKAA_171rdb115_2
                     pictureBox2.Image = imgData.drawImage("RGB");
                     imgData.hist2.drawHistogram(chart2, "RGB");
                 }
+<<<<<<< Updated upstream
+=======
                 else if (radioButton2.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("HSV");
@@ -180,11 +175,12 @@ namespace IKAA_171rdb115_2
                 {
                     pictureBox2.Image = imgData.drawImage("CMYK");
                 }
+>>>>>>> Stashed changes
                 else
                 {
-                    pictureBox2.Image = imgData.drawImage("YUV");
+                    pictureBox2.Image = imgData.drawImage("HSV");
                 }
-
+                
             }
         }
 
@@ -197,6 +193,8 @@ namespace IKAA_171rdb115_2
                     pictureBox2.Image = imgData.drawImage("R");
                     imgData.hist2.drawHistogram(chart2, "R");
                 }
+<<<<<<< Updated upstream
+=======
                 else if (radioButton2.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("H");
@@ -206,9 +204,10 @@ namespace IKAA_171rdb115_2
                 {
                     pictureBox2.Image = imgData.drawImage("C");
                 }
+>>>>>>> Stashed changes
                 else
                 {
-                    pictureBox2.Image = imgData.drawImage("Yy");
+                    pictureBox2.Image = imgData.drawImage("H");
                 }
             }
         }
@@ -222,6 +221,8 @@ namespace IKAA_171rdb115_2
                     pictureBox2.Image = imgData.drawImage("G");
                     imgData.hist2.drawHistogram(chart2, "G");
                 }
+<<<<<<< Updated upstream
+=======
                 else if (radioButton2.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("S");
@@ -231,9 +232,10 @@ namespace IKAA_171rdb115_2
                 {
                     pictureBox2.Image = imgData.drawImage("M");
                 }
+>>>>>>> Stashed changes
                 else
                 {
-                    pictureBox2.Image = imgData.drawImage("U");
+                    pictureBox2.Image = imgData.drawImage("S");
                 }
             }
         }
@@ -247,6 +249,8 @@ namespace IKAA_171rdb115_2
                     pictureBox2.Image = imgData.drawImage("B");
                     imgData.hist2.drawHistogram(chart2, "B");
                 }
+<<<<<<< Updated upstream
+=======
                 else if (radioButton2.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("V");
@@ -256,9 +260,10 @@ namespace IKAA_171rdb115_2
                 {
                     pictureBox2.Image = imgData.drawImage("Y");
                 }
+>>>>>>> Stashed changes
                 else
                 {
-                    pictureBox2.Image = imgData.drawImage("Vv");
+                    pictureBox2.Image = imgData.drawImage("V");
                 }
             }
         }
@@ -272,69 +277,21 @@ namespace IKAA_171rdb115_2
                     pictureBox2.Image = imgData.drawImage("I");
                     imgData.hist2.drawHistogram(chart2, "I");
                 }
-                else
-                {
-                    pictureBox2.Image = imgData.drawImage("K");
-                }
             }
         }
 
-        private void invertButton_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                pictureBox2.Image.Save(saveFileDialog1.FileName);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
         {
 
             Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
             imgData.readImage(bmp);
             pictureBox2.Image = imgData.drawImage("Invert");
         }
-
-        private void colorButton_Click(object sender, EventArgs e)
-        {
-            colorDialog1.ShowDialog();
-            colorButton.BackColor = colorDialog1.Color;
-        }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                pictureBox2.Image.Save(saveFileDialog1.FileName);
-        }
-
-        private void stretchingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (imgData.img != null)
-            {
-                imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
-                imgData.contrastByHistogram("R");
-                imgData.contrastByHistogram("G");
-                imgData.contrastByHistogram("B");
-                imgData.contrastByHistogram("I");
-                pictureBox2.Image = imgData.drawImage("Stretch");
-                imgData.hist2.drawHistogram(chart2, "RGB");
-                radioButton1.Checked = true;
-                radioButton3.Checked = true;
-            }
-        }
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-            toolTip1.SetToolTip(trackBar1, trackBar1.Value.ToString() + "%");
-        }
-
-        private void normalizeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (imgData.img != null)
-            {
-                imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
-                imgData.normalizeHistogram("R", trackBar1.Value);
-                imgData.normalizeHistogram("G", trackBar1.Value);
-                imgData.normalizeHistogram("B", trackBar1.Value);
-                imgData.normalizeHistogram("I", trackBar1.Value);
-                pictureBox2.Image = imgData.drawImage("Stretch");
-                imgData.hist2.drawHistogram(chart2, "RGB");
-                radioButton1.Checked = true;
-                radioButton3.Checked = true;
-            }
-        }
     }
 }
-
