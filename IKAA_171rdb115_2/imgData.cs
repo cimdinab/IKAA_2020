@@ -12,6 +12,7 @@ namespace IKAA_171rdb115_2
         public PixelClassCMYK[,] imgcmyk;
         public PixelClassYUV[,] imgyuv;
         public PixelClassRGB[,] imgnew;
+        public PixelClassHSV[,] imghsvnew;
         public Histogram hist1; //original image
         public Histogram hist2; //edited image
 
@@ -22,6 +23,7 @@ namespace IKAA_171rdb115_2
             imgcmyk = null;
             imgyuv = null;
             imgnew = null;
+            imghsvnew = null;
             hist1 = null;
             hist2 = null;
         }
@@ -31,6 +33,7 @@ namespace IKAA_171rdb115_2
             img = new PixelClassRGB[bmp.Width, bmp.Height];
             imgnew = new PixelClassRGB[bmp.Width, bmp.Height];
             imghsv = new PixelClassHSV[bmp.Width, bmp.Height];
+            imghsvnew = new PixelClassHSV[bmp.Width, bmp.Height];
             imgcmyk = new PixelClassCMYK[bmp.Width, bmp.Height];
             imgyuv = new PixelClassYUV[bmp.Width, bmp.Height];
             hist1 = new Histogram();
@@ -60,6 +63,7 @@ namespace IKAA_171rdb115_2
                     img[x, y] = new PixelClassRGB(line[pixelComponents * x + 2], line[pixelComponents * x + 1], line[pixelComponents * x]); //BGR
                     imgnew[x, y] = new PixelClassRGB(line[pixelComponents * x + 2], line[pixelComponents * x + 1], line[pixelComponents * x]); //BGR
                     imghsv[x, y] = new PixelClassHSV(img[x, y].R, img[x, y].G, img[x, y].B);
+                    imghsvnew[x, y] = new PixelClassHSV(img[x,y].R, img[x, y].G, img[x, y].B);
                     imgcmyk[x, y] = new PixelClassCMYK(img[x, y].R, img[x, y].G, img[x, y].B);
                     imgyuv[x, y] = new PixelClassYUV(img[x, y].R, img[x, y].G, img[x, y].B);
                 }
@@ -72,16 +76,27 @@ namespace IKAA_171rdb115_2
             Console.WriteLine("Image Read time: " + elapsedMs);
         }
 
-        public void contrastByHistogram(string mode)
+        public void contrastByHistogram(string mode, int value, bool isStretch)
         {
             int[] hRGBI = new int[257];
             if (mode == "R") { hRGBI = hist2.hR; }
             else if (mode == "G") { hRGBI = hist2.hG; }
             else if (mode == "B") { hRGBI = hist2.hB; }
             else if (mode == "I") { hRGBI = hist2.hI; }
-
-            int dBegin = hist2.FindFirst(hRGBI, 0);
-            int dEnd = hist2.FindLast(hRGBI, 0);
+            else if (mode == "S") { hRGBI = hist2.hS; }
+            else if (mode == "V") { hRGBI = hist2.hV; }
+            int dBegin, dEnd;
+            if (isStretch)
+            {
+                dBegin = hist2.FindFirst(hRGBI, 0);
+                dEnd = hist2.FindLast(hRGBI, 0);
+            }
+            else
+            {
+                dBegin = hist2.FindFirst(hRGBI, value);
+                dEnd = hist2.FindLast(hRGBI, value);
+            }
+            
             int dOriginal = dEnd - dBegin;
             int dDesired = 255;
             double k = dDesired / (double)dOriginal;
@@ -105,42 +120,13 @@ namespace IKAA_171rdb115_2
                     {
                         imgnew[x, y].B = (byte)Math.Min(255, Math.Max(0, k * (img[x, y].B - dBegin)));
                     }
-                }
-            }
-
-        }
-
-        public void normalizeHistogram(string mode, int value)
-        {
-            int[] hRGBI = new int[257];
-            if (mode == "R") { hRGBI = hist2.hR; }
-            else if (mode == "G") { hRGBI = hist2.hG; }
-            else if (mode == "B") { hRGBI = hist2.hB; }
-            else if (mode == "I") { hRGBI = hist2.hI; }
-            int dDesired = 255;
-            int dBegin = hist2.FindFirst(hRGBI, value);
-            int dEnd = hist2.FindLast(hRGBI, value);
-            int dOriginal = dEnd - dBegin;
-            double k = dDesired / (double) dOriginal;
-            for (int x = 0; x < imgnew.GetLength(0); x++)
-            {
-                for (int y = 0; y < imgnew.GetLength(1); y++)
-                {
-                    if (mode == "I")
+                    else if (mode == "S")
                     {
-                        imgnew[x, y].I = (byte)Math.Min(255, Math.Max(0, k * (img[x, y].I - dBegin)));
+                        imghsvnew[x, y].S = (byte)Math.Min(255, Math.Max(0, k * (imghsv[x, y].S - dBegin)));
                     }
-                    else if (mode == "R")
+                    else if(mode == "V")
                     {
-                        imgnew[x, y].R = (byte)Math.Min(255, Math.Max(0, k * (img[x, y].R - dBegin)));
-                    }
-                    else if (mode == "G")
-                    {
-                        imgnew[x, y].G = (byte)Math.Min(255, Math.Max(0, k * (img[x, y].G - dBegin)));
-                    }
-                    else if (mode == "B")
-                    {
-                        imgnew[x, y].B = (byte)Math.Min(255, Math.Max(0, k * (img[x, y].B - dBegin)));
+                        imghsvnew[x, y].V = (byte)Math.Min(255, Math.Max(0, k * (imghsv[x, y].V - dBegin)));
                     }
                 }
             }
@@ -216,13 +202,62 @@ namespace IKAA_171rdb115_2
                                     imgnew[x, y].I = Convert.ToByte(0.0722f * imgnew[x, y].B + 0.7152f * imgnew[x, y].G + 0.2126f * imgnew[x, y].R);
                                     break;
                                 } //grayscale
-                            case "Stretch":
+                            case "StretchRGB":
                                 {
                                     line[3 * x] = imgnew[x, y].B; //blue
                                     line[3 * x + 1] = imgnew[x, y].G; //green
                                     line[3 * x + 2] = imgnew[x, y].R; //red
                                     break;
                                 } //rgb
+                            case "StretchR":
+                                {
+                                    line[3 * x] = 0; //blue
+                                    line[3 * x + 1] = 0; //green
+                                    line[3 * x + 2] = imgnew[x, y].R; //red
+                                    break;
+                                }
+                            case "StretchG":
+                                {
+                                    line[3 * x] = 0; //blue
+                                    line[3 * x + 1] = imgnew[x, y].G; //green
+                                    line[3 * x + 2] = 0; //red
+                                    break;
+                                }
+                            case "StretchB":
+                                {
+                                    line[3 * x] = imgnew[x, y].I; //blue
+                                    line[3 * x + 1] = 0; //green
+                                    line[3 * x + 2] = 0; //red
+                                    break;
+                                }
+                            case "StretchI":
+                                {
+                                    line[3 * x] = imgnew[x, y].I; //blue
+                                    line[3 * x + 1] = imgnew[x, y].I; //green
+                                    line[3 * x + 2] = imgnew[x, y].I; //red
+                                    break;
+                                }
+                            case "StretchHSV":
+                                {
+                                    line[3 * x] = img[x,y].hsvToRGB(imghsv[x,y].H, imghsvnew[x,y].S, imghsvnew[x,y].V).B; //blue
+                                    line[3 * x + 1] = img[x, y].hsvToRGB(imghsv[x, y].H, imghsvnew[x, y].S, imghsvnew[x, y].V).G; //green
+                                    line[3 * x + 2] = img[x, y].hsvToRGB(imghsv[x, y].H, imghsvnew[x, y].S, imghsvnew[x, y].V).R; //red
+                                    break;
+                                }
+                            case "StretchS":
+                                {
+                                    line[3 * x] = imghsvnew[x,y].S; //blue
+                                    line[3 * x + 1] = imghsvnew[x, y].S; //green
+                                    line[3 * x + 2] = imghsvnew[x, y].S; //red
+                                    break;
+                                }
+                            case "StretchV":
+                                {
+                                    line[3 * x] = imghsvnew[x, y].V; //blue
+                                    line[3 * x + 1] = imghsvnew[x, y].V; //green
+                                    line[3 * x + 2] = imghsvnew[x, y].V; //red
+                                    break;
+                                }
                             case "Invert":
                                 {
                                     line[3 * x] = Convert.ToByte(255 - img[x, y].B); //blue

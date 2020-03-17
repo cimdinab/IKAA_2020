@@ -37,14 +37,14 @@ namespace IKAA_171rdb115_2
         public int FindFirst(int [] H, int x)
         { //meklējam histogrammas sākumu
             int i = 0;
-            while (H[i] <= x) { i++; }
+            while (H[i] <= x && i < 255) { i++; }
             return i;
         }
 
         public int FindLast(int [] H, int x)
         { //meklējam histogrammas galapunktu
             int i = 255;
-            while (H[i] <=x) { i--; }
+            while (H[i] <=x && i > 0) { i--; }
             return i;
         }
 
@@ -234,5 +234,6 @@ namespace IKAA_171rdb115_2
             }
 
         }
+
     }
 }

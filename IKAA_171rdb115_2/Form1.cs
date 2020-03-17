@@ -117,6 +117,7 @@ namespace IKAA_171rdb115_2
             if (imgData.img != null)
             {
                 pictureBox2.Image = imgData.drawImage("RGB");
+                imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
                 imgData.hist2.drawHistogram(chart2, "RGB");
             }
         }
@@ -131,6 +132,7 @@ namespace IKAA_171rdb115_2
             if (imgData.img != null)
             {
                 pictureBox2.Image = imgData.drawImage("HSV");
+                imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
                 imgData.hist2.drawHistogram(chart2, "HSV");
             }
         }
@@ -169,11 +171,13 @@ namespace IKAA_171rdb115_2
                 if (radioButton1.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("RGB");
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
                     imgData.hist2.drawHistogram(chart2, "RGB");
                 }
                 else if (radioButton2.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("HSV");
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
                     imgData.hist2.drawHistogram(chart2, "HSV");
                 }
                 else if (radioButton8.Checked)
@@ -195,11 +199,13 @@ namespace IKAA_171rdb115_2
                 if (radioButton1.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("R");
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
                     imgData.hist2.drawHistogram(chart2, "R");
                 }
                 else if (radioButton2.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("H");
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
                     imgData.hist2.drawHistogram(chart2, "H");
                 }
                 else if (radioButton8.Checked)
@@ -220,11 +226,13 @@ namespace IKAA_171rdb115_2
                 if (radioButton1.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("G");
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
                     imgData.hist2.drawHistogram(chart2, "G");
                 }
                 else if (radioButton2.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("S");
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
                     imgData.hist2.drawHistogram(chart2, "S");
                 }
                 else if (radioButton8.Checked)
@@ -245,11 +253,13 @@ namespace IKAA_171rdb115_2
                 if (radioButton1.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("B");
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
                     imgData.hist2.drawHistogram(chart2, "B");
                 }
                 else if (radioButton2.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("V");
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
                     imgData.hist2.drawHistogram(chart2, "V");
                 }
                 else if (radioButton8.Checked)
@@ -270,6 +280,7 @@ namespace IKAA_171rdb115_2
                 if (radioButton1.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("I");
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
                     imgData.hist2.drawHistogram(chart2, "I");
                 }
                 else
@@ -303,15 +314,9 @@ namespace IKAA_171rdb115_2
         {
             if (imgData.img != null)
             {
-                imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
-                imgData.contrastByHistogram("R");
-                imgData.contrastByHistogram("G");
-                imgData.contrastByHistogram("B");
-                imgData.contrastByHistogram("I");
-                pictureBox2.Image = imgData.drawImage("Stretch");
-                imgData.hist2.drawHistogram(chart2, "RGB");
-                radioButton1.Checked = true;
-                radioButton3.Checked = true;
+                bool isStretch = true;
+                int value = 0;
+                stretchHistrogram(isStretch, value);
             }
         }
 
@@ -324,15 +329,87 @@ namespace IKAA_171rdb115_2
         {
             if (imgData.img != null)
             {
-                imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
-                imgData.normalizeHistogram("R", trackBar1.Value);
-                imgData.normalizeHistogram("G", trackBar1.Value);
-                imgData.normalizeHistogram("B", trackBar1.Value);
-                imgData.normalizeHistogram("I", trackBar1.Value);
-                pictureBox2.Image = imgData.drawImage("Stretch");
-                imgData.hist2.drawHistogram(chart2, "RGB");
-                radioButton1.Checked = true;
-                radioButton3.Checked = true;
+                bool isStretch = false;
+                int value = trackBar1.Value;
+                stretchHistrogram(isStretch, value);
+            }
+        }
+
+        private void stretchHistrogram(bool isStretch, int value)
+        {
+            if (radioButton1.Checked)
+            {
+                if (radioButton3.Checked)
+                {
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.contrastByHistogram("R", value, isStretch);
+                    imgData.contrastByHistogram("G", value, isStretch);
+                    imgData.contrastByHistogram("B", value, isStretch);
+                    imgData.contrastByHistogram("I", value, isStretch);
+                    pictureBox2.Image = imgData.drawImage("StretchRGB");
+                    imgData.hist2.readHistogram(imgData.imgnew, imgData.imghsvnew);
+                    imgData.hist2.drawHistogram(chart2, "RGB");
+                }
+                else if (radioButton4.Checked)
+                {
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.contrastByHistogram("R", value, isStretch);
+                    pictureBox2.Image = imgData.drawImage("StretchR");
+                    imgData.hist2.readHistogram(imgData.imgnew, imgData.imghsvnew);
+                    imgData.hist2.drawHistogram(chart2, "R");
+                }
+                else if (radioButton5.Checked)
+                {
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.contrastByHistogram("G", value, isStretch);
+                    pictureBox2.Image = imgData.drawImage("StretchG");
+                    imgData.hist2.readHistogram(imgData.imgnew, imgData.imghsvnew);
+                    imgData.hist2.drawHistogram(chart2, "G");
+                }
+                else if (radioButton6.Checked)
+                {
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.contrastByHistogram("B", value, isStretch);
+                    pictureBox2.Image = imgData.drawImage("StretchB");
+                    imgData.hist2.readHistogram(imgData.imgnew, imgData.imghsvnew);
+                    imgData.hist2.drawHistogram(chart2, "B");
+                }
+                else if (radioButton7.Checked)
+                {
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.contrastByHistogram("I", value, isStretch);
+                    pictureBox2.Image = imgData.drawImage("StretchI");
+                    imgData.hist2.readHistogram(imgData.imgnew, imgData.imghsvnew);
+                    imgData.hist2.drawHistogram(chart2, "I");
+                }
+            }
+            else if (radioButton2.Checked)
+            {
+                if (radioButton3.Checked)
+                {
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.contrastByHistogram("S", value, isStretch);
+                    imgData.contrastByHistogram("V", value, isStretch);
+                    pictureBox2.Image = imgData.drawImage("StretchHSV");
+                    imgData.hist2.readHistogram(imgData.imgnew, imgData.imghsvnew);
+                    imgData.hist2.drawHistogram(chart2, "HSV");
+                }
+                else if (radioButton5.Checked)
+                {
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.contrastByHistogram("S", value, isStretch);
+                    pictureBox2.Image = imgData.drawImage("StretchS");
+                    imgData.hist2.readHistogram(imgData.imgnew, imgData.imghsvnew);
+                    imgData.hist2.drawHistogram(chart2, "S");
+                }
+                else if (radioButton6.Checked)
+                {
+                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.contrastByHistogram("V", value, isStretch);
+                    pictureBox2.Image = imgData.drawImage("StretchV");
+                    imgData.hist2.readHistogram(imgData.imgnew, imgData.imghsvnew);
+                    imgData.hist2.drawHistogram(chart2, "V");
+                }
             }
         }
     }
