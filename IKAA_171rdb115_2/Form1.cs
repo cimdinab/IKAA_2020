@@ -14,9 +14,12 @@ namespace IKAA_171rdb115_2
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "JPG Files|*.jpg";
+            dialog.Title = "Please select an image";
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
-                pictureBox1.Image = Bitmap.FromFile(openFileDialog1.FileName);
+                pictureBox1.Image = Bitmap.FromFile(dialog.FileName);
             }
             Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
             imgData.readImage(bmp);
@@ -117,7 +120,7 @@ namespace IKAA_171rdb115_2
             if (imgData.img != null)
             {
                 pictureBox2.Image = imgData.drawImage("RGB");
-                imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                imgData.hist2.readHistogramHSV(imgData.img, imgData.imghsv);
                 imgData.hist2.drawHistogram(chart2, "RGB");
             }
         }
@@ -132,7 +135,7 @@ namespace IKAA_171rdb115_2
             if (imgData.img != null)
             {
                 pictureBox2.Image = imgData.drawImage("HSV");
-                imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                imgData.hist2.readHistogramHSV(imgData.img, imgData.imghsv);
                 imgData.hist2.drawHistogram(chart2, "HSV");
             }
         }
@@ -171,13 +174,13 @@ namespace IKAA_171rdb115_2
                 if (radioButton1.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("RGB");
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramRGB(imgData.img);
                     imgData.hist2.drawHistogram(chart2, "RGB");
                 }
                 else if (radioButton2.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("HSV");
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramHSV(imgData.img, imgData.imghsv);
                     imgData.hist2.drawHistogram(chart2, "HSV");
                 }
                 else if (radioButton8.Checked)
@@ -199,13 +202,13 @@ namespace IKAA_171rdb115_2
                 if (radioButton1.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("R");
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramRGB(imgData.img);
                     imgData.hist2.drawHistogram(chart2, "R");
                 }
                 else if (radioButton2.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("H");
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramHSV(imgData.img, imgData.imghsv);
                     imgData.hist2.drawHistogram(chart2, "H");
                 }
                 else if (radioButton8.Checked)
@@ -226,13 +229,13 @@ namespace IKAA_171rdb115_2
                 if (radioButton1.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("G");
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramRGB(imgData.img);
                     imgData.hist2.drawHistogram(chart2, "G");
                 }
                 else if (radioButton2.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("S");
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramHSV(imgData.img, imgData.imghsv);
                     imgData.hist2.drawHistogram(chart2, "S");
                 }
                 else if (radioButton8.Checked)
@@ -253,13 +256,13 @@ namespace IKAA_171rdb115_2
                 if (radioButton1.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("B");
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramRGB(imgData.img);
                     imgData.hist2.drawHistogram(chart2, "B");
                 }
                 else if (radioButton2.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("V");
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramHSV(imgData.img, imgData.imghsv);
                     imgData.hist2.drawHistogram(chart2, "V");
                 }
                 else if (radioButton8.Checked)
@@ -280,7 +283,7 @@ namespace IKAA_171rdb115_2
                 if (radioButton1.Checked)
                 {
                     pictureBox2.Image = imgData.drawImage("I");
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramRGB(imgData.img);
                     imgData.hist2.drawHistogram(chart2, "I");
                 }
                 else
@@ -341,45 +344,45 @@ namespace IKAA_171rdb115_2
             {
                 if (radioButton3.Checked)
                 {
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramRGB(imgData.img);
                     imgData.contrastByHistogram("R", value, isStretch);
                     imgData.contrastByHistogram("G", value, isStretch);
                     imgData.contrastByHistogram("B", value, isStretch);
                     imgData.contrastByHistogram("I", value, isStretch);
                     pictureBox2.Image = imgData.drawImage("StretchRGB");
-                    imgData.hist2.readHistogram(imgData.imgnew, imgData.imghsvnew);
+                    imgData.hist2.readHistogramRGB(imgData.imgnew);
                     imgData.hist2.drawHistogram(chart2, "RGB");
                 }
                 else if (radioButton4.Checked)
                 {
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramRGB(imgData.img);
                     imgData.contrastByHistogram("R", value, isStretch);
                     pictureBox2.Image = imgData.drawImage("StretchR");
-                    imgData.hist2.readHistogram(imgData.imgnew, imgData.imghsvnew);
+                    imgData.hist2.readHistogramRGB(imgData.imgnew);
                     imgData.hist2.drawHistogram(chart2, "R");
                 }
                 else if (radioButton5.Checked)
                 {
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramRGB(imgData.img);
                     imgData.contrastByHistogram("G", value, isStretch);
                     pictureBox2.Image = imgData.drawImage("StretchG");
-                    imgData.hist2.readHistogram(imgData.imgnew, imgData.imghsvnew);
+                    imgData.hist2.readHistogramRGB(imgData.imgnew);
                     imgData.hist2.drawHistogram(chart2, "G");
                 }
                 else if (radioButton6.Checked)
                 {
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramRGB(imgData.img);
                     imgData.contrastByHistogram("B", value, isStretch);
                     pictureBox2.Image = imgData.drawImage("StretchB");
-                    imgData.hist2.readHistogram(imgData.imgnew, imgData.imghsvnew);
+                    imgData.hist2.readHistogramRGB(imgData.imgnew);
                     imgData.hist2.drawHistogram(chart2, "B");
                 }
                 else if (radioButton7.Checked)
                 {
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramRGB(imgData.img);
                     imgData.contrastByHistogram("I", value, isStretch);
                     pictureBox2.Image = imgData.drawImage("StretchI");
-                    imgData.hist2.readHistogram(imgData.imgnew, imgData.imghsvnew);
+                    imgData.hist2.readHistogramRGB(imgData.imgnew);
                     imgData.hist2.drawHistogram(chart2, "I");
                 }
             }
@@ -387,29 +390,215 @@ namespace IKAA_171rdb115_2
             {
                 if (radioButton3.Checked)
                 {
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramHSV(imgData.img, imgData.imghsv);
                     imgData.contrastByHistogram("S", value, isStretch);
                     imgData.contrastByHistogram("V", value, isStretch);
                     pictureBox2.Image = imgData.drawImage("StretchHSV");
-                    imgData.hist2.readHistogram(imgData.imgnew, imgData.imghsvnew);
+                    imgData.hist2.readHistogramHSV(imgData.imgnew, imgData.imghsvnew);
                     imgData.hist2.drawHistogram(chart2, "HSV");
                 }
                 else if (radioButton5.Checked)
                 {
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramHSV(imgData.img, imgData.imghsv);
                     imgData.contrastByHistogram("S", value, isStretch);
                     pictureBox2.Image = imgData.drawImage("StretchS");
-                    imgData.hist2.readHistogram(imgData.imgnew, imgData.imghsvnew);
+                    imgData.hist2.readHistogramHSV(imgData.imgnew, imgData.imghsvnew);
                     imgData.hist2.drawHistogram(chart2, "S");
                 }
                 else if (radioButton6.Checked)
                 {
-                    imgData.hist2.readHistogram(imgData.img, imgData.imghsv);
+                    imgData.hist2.readHistogramHSV(imgData.img, imgData.imghsv);
                     imgData.contrastByHistogram("V", value, isStretch);
                     pictureBox2.Image = imgData.drawImage("StretchV");
-                    imgData.hist2.readHistogram(imgData.imgnew, imgData.imghsvnew);
+                    imgData.hist2.readHistogramHSV(imgData.imgnew, imgData.imghsvnew);
                     imgData.hist2.drawHistogram(chart2, "V");
                 }
+            }
+        }
+
+        private void filter1blurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter(); //jauns filtrs
+                imgData.filters.filter3x3Blur(); //veidojam filtru
+                imgData.filterImage(imgData.filters); //filtrējam attēlu
+                imgData.hist2.readHistogramRGB(imgData.img); //noalasam histogrammu
+                imgData.hist2.drawHistogram(chart2, "RGB"); //zīmējam histogrammu
+                radioButton1.Checked = true; //RGB
+                radioButton3.Checked = true; //Composite
+                pictureBox2.Image = imgData.drawImage("StretchRGB"); //izvadam attēlu
+                GC.Collect();
+            }
+        }
+
+        private void filter2blurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter(); //jauns filtrs
+                imgData.filters.filter3x3Blur2(); //veidojam filtru
+                imgData.filterImage(imgData.filters); //filtrējam attēlu
+                imgData.hist2.readHistogramRGB(imgData.img); //noalasam histogrammu
+                imgData.hist2.drawHistogram(chart2, "RGB"); //zīmējam histogrammu
+                radioButton1.Checked = true; //RGB
+                radioButton3.Checked = true; //Composite
+                pictureBox2.Image = imgData.drawImage("StretchRGB"); //izvadam attēlu
+                GC.Collect();
+            }
+        }
+
+        private void filter3blurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter(); //jauns filtrs
+                imgData.filters.filter3x3Blur3(); //veidojam filtru
+                imgData.filterImage(imgData.filters); //filtrējam attēlu
+                imgData.hist2.readHistogramRGB(imgData.img); //noalasam histogrammu
+                imgData.hist2.drawHistogram(chart2, "RGB"); //zīmējam histogrammu
+                radioButton1.Checked = true; //RGB
+                radioButton3.Checked = true; //Composite
+                pictureBox2.Image = imgData.drawImage("StretchRGB"); //izvadam attēlu
+                GC.Collect();
+            }
+        }
+
+        private void filter1sharpenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter(); //jauns filtrs
+                imgData.filters.filter3x3Sharpen(); //veidojam filtru
+                imgData.filterImage(imgData.filters); //filtrējam attēlu
+                imgData.hist2.readHistogramRGB(imgData.img); //noalasam histogrammu
+                imgData.hist2.drawHistogram(chart2, "RGB"); //zīmējam histogrammu
+                radioButton1.Checked = true; //RGB
+                radioButton3.Checked = true; //Composite
+                pictureBox2.Image = imgData.drawImage("StretchRGB"); //izvadam attēlu
+                GC.Collect();
+            }
+        }
+
+        private void filter2sharpenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter(); //jauns filtrs
+                imgData.filters.filter3x3Sharpen2(); //veidojam filtru
+                imgData.filterImage(imgData.filters); //filtrējam attēlu
+                imgData.hist2.readHistogramRGB(imgData.img); //noalasam histogrammu
+                imgData.hist2.drawHistogram(chart2, "RGB"); //zīmējam histogrammu
+                radioButton1.Checked = true; //RGB
+                radioButton3.Checked = true; //Composite
+                pictureBox2.Image = imgData.drawImage("StretchRGB"); //izvadam attēlu
+                GC.Collect();
+            }
+        }
+
+        private void filter3sharpenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter(); //jauns filtrs
+                imgData.filters.filter3x3Sharpen3(); //veidojam filtru
+                imgData.filterImage(imgData.filters); //filtrējam attēlu
+                imgData.hist2.readHistogramRGB(imgData.img); //noalasam histogrammu
+                imgData.hist2.drawHistogram(chart2, "RGB"); //zīmējam histogrammu
+                radioButton1.Checked = true; //RGB
+                radioButton3.Checked = true; //Composite
+                pictureBox2.Image = imgData.drawImage("StretchRGB"); //izvadam attēlu
+                GC.Collect();
+            }
+        }
+
+        private void median3x3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap sourceBitmap = (Bitmap)pictureBox1.Image.Clone();
+            imgData.filters = new Filter(); //jauns filtrs
+            imgData.filters.MedianFilter(sourceBitmap, imgData.imgnew, 3, 0, false);
+            pictureBox2.Image = imgData.drawImage("StretchRGB"); //izvadam attēlu
+            imgData.hist2.readHistogramRGB(imgData.imgnew); //noalasam histogrammu
+            imgData.hist2.drawHistogram(chart2, "I"); //zīmējam histogrammu
+            radioButton1.Checked = true; //RGB
+            radioButton3.Checked = true; //Composite
+
+        }
+
+        private void median5x5ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap sourceBitmap = (Bitmap)pictureBox1.Image.Clone();
+            imgData.filters = new Filter(); //jauns filtrs
+            imgData.filters.MedianFilter(sourceBitmap, imgData.imgnew, 5, 0, false);
+            pictureBox2.Image = imgData.drawImage("StretchRGB"); //izvadam attēlu
+            imgData.hist2.readHistogramRGB(imgData.imgnew); //noalasam histogrammu
+            imgData.hist2.drawHistogram(chart2, "I"); //zīmējam histogrammu
+            radioButton1.Checked = true; //RGB
+            radioButton3.Checked = true; //Composite
+
+        }
+
+        private void median7x7ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap sourceBitmap = (Bitmap)pictureBox1.Image.Clone();
+            imgData.filters = new Filter(); //jauns filtrs
+            imgData.filters.MedianFilter(sourceBitmap, imgData.imgnew, 7, 0, false);
+            pictureBox2.Image = imgData.drawImage("StretchRGB"); //izvadam attēlu
+            imgData.hist2.readHistogramRGB(imgData.imgnew); //noalasam histogrammu
+            imgData.hist2.drawHistogram(chart2, "I"); //zīmējam histogrammu
+            radioButton1.Checked = true; //RGB
+            radioButton3.Checked = true; //Composite
+
+        }
+
+        private void sobelOperator3x3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter();
+                imgData.filters2 = new Filter();
+                imgData.filters.xFilter3x3Sobel();
+                imgData.filters2.yFilter3x3Sobel();
+                radioButton1.Checked = true; //RGB
+                radioButton7.Checked = true; //Intensity
+                //izaucam metodi, kas meklē robežas
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Sobel");
+                //pārzīmējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchI"); //vai Intensity
+            }
+        }
+
+        private void prewittOperator3x3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter();
+                imgData.filters2 = new Filter();
+                imgData.filters.xFilter3x3Prewitt();
+                imgData.filters2.yFilter3x3Prewitt();
+                radioButton1.Checked = true; //RGB
+                radioButton7.Checked = true; //Intensity
+                //izaucam metodi, kas meklē robežas
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Prewitt");
+                //pārzīmējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchI"); //vai Intensity
+            }
+        }
+
+        private void robertsOperatorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter();
+                imgData.filters2 = new Filter();
+                imgData.filters.xFilter2x2Roberts();
+                imgData.filters2.yFilter2x2Roberts();
+                radioButton1.Checked = true; //RGB
+                radioButton7.Checked = true; //Intensity
+                //izaucam metodi, kas meklē robežas
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Roberts");
+                //pārzīmējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchI"); //vai Intensity
             }
         }
     }

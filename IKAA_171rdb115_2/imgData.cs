@@ -15,6 +15,8 @@ namespace IKAA_171rdb115_2
         public PixelClassHSV[,] imghsvnew;
         public Histogram hist1; //original image
         public Histogram hist2; //edited image
+        public Filter filters;
+        public Filter filters2;
 
         ~imgData()
         {
@@ -27,6 +29,8 @@ namespace IKAA_171rdb115_2
             hist1 = null;
             hist2 = null;
         }
+
+
         public void readImage(Bitmap bmp)
         {
             var watchread = System.Diagnostics.Stopwatch.StartNew();
@@ -63,17 +67,112 @@ namespace IKAA_171rdb115_2
                     img[x, y] = new PixelClassRGB(line[pixelComponents * x + 2], line[pixelComponents * x + 1], line[pixelComponents * x]); //BGR
                     imgnew[x, y] = new PixelClassRGB(line[pixelComponents * x + 2], line[pixelComponents * x + 1], line[pixelComponents * x]); //BGR
                     imghsv[x, y] = new PixelClassHSV(img[x, y].R, img[x, y].G, img[x, y].B);
-                    imghsvnew[x, y] = new PixelClassHSV(img[x,y].R, img[x, y].G, img[x, y].B);
+                    imghsvnew[x, y] = new PixelClassHSV(img[x, y].R, img[x, y].G, img[x, y].B);
                     imgcmyk[x, y] = new PixelClassCMYK(img[x, y].R, img[x, y].G, img[x, y].B);
                     imgyuv[x, y] = new PixelClassYUV(img[x, y].R, img[x, y].G, img[x, y].B);
                 }
             }
             bmp.UnlockBits(bmpData); //nolasīšanas rezultāts
-            hist1.readHistogram(img, imghsv);
-            hist2.readHistogram(imgnew, imghsv);
+            hist1.readHistogramHSV(img, imghsv);
+            hist2.readHistogramHSV(imgnew, imghsv);
             watchread.Stop();
             var elapsedMs = watchread.ElapsedMilliseconds;
             Console.WriteLine("Image Read time: " + elapsedMs);
+        }
+
+        public void filterImage(Filter f)
+        {
+            if (img != null)
+            {
+                for (int x = 1; x < img.GetLength(0) - 1; x++)
+                {
+                    for (int y = 1; y < img.GetLength(1) - 1; y++)
+                    {
+                        int r = 0;
+                        int g = 0;
+                        int b = 0;
+                        int i = 0;
+
+                        for (int fi = 0; fi < 3; fi++)
+                        {
+                            for (int fj = 0; fj < 3; fj++)
+                            { //attēla pikseļu reizināšana ar filtra elementiem
+                                r += img[x + fi - 1, y + fj - 1].R * f.F[fi, fj];
+                                g += img[x + fi - 1, y + fj - 1].G * f.F[fi, fj];
+                                b += img[x + fi - 1, y + fj - 1].B * f.F[fi, fj];
+                                i += img[x + fi - 1, y + fj - 1].I * f.F[fi, fj];
+                            }
+                        }
+
+                        // izkaitļojam koeficientus katram kanālam
+                        r = Math.Max(0, Math.Min(255, r /= f.K));
+                        g = Math.Max(0, Math.Min(255, g /= f.K));
+                        b = Math.Max(0, Math.Min(255, b /= f.K));
+                        i = Math.Max(0, Math.Min(255, i /= f.K));
+
+                        //piešķīram jaunas vērtības
+                        imgnew[x, y].R = (byte)r;
+                        imgnew[x, y].G = (byte)g;
+                        imgnew[x, y].B = (byte)b;
+                        imgnew[x, y].I = (byte)i;
+                    }
+                }
+            }
+        }
+
+        public void edgeSegmentation(Filter Fx, Filter Fy, string filter)
+        {
+            if (img != null)
+            {
+                //izskrienam cauri attēlam
+                for (int x = 1; x < img.GetLength(0) - 1; x++)
+                {
+                    for (int y = 1; y < img.GetLength(1) - 1; y++)
+                    {
+                        int Gx = 0;
+                        int Gy = 0;
+                        int G;
+
+                        switch (filter)
+                        {
+                            case "Roberts":
+                                {
+                                    //Apskatam visus tekoša pikseļa visus kaimiņus
+                                    for (int fi = 0; fi < 2; fi++)
+                                    {
+                                        for (int fj = 0; fj < 2; fj++)
+                                        {
+                                            Gx += img[x + fi - 1, y + fj - 1].I * Fx.Fr[fi, fj];
+                                            Gy += img[x + fi - 1, y + fj - 1].I * Fy.Fr[fi, fj];
+                                        }
+                                    }
+                                    break;
+                                }
+                            default:
+                                {
+                                    //Apskatam visus tekoša pikseļa visus kaimiņus
+                                    for (int fi = 0; fi < 3; fi++)
+                                    {
+                                        for (int fj = 0; fj < 3; fj++)
+                                        {
+                                            Gx += img[x + fi - 1, y + fj - 1].I * Fx.F[fi, fj];
+                                            Gy += img[x + fi - 1, y + fj - 1].I * Fy.F[fi, fj];
+                                        }
+                                    }
+                                    break;
+                                }
+                        }
+                        
+                        //izrēķinam rezultējošu vērtību un nosakam kur ir robeža
+                        G = Convert.ToInt32(Math.Sqrt(Gx * Gx + Gy * Gy));
+                        //normalizējam attēlu atšķelot robežvērtības kas
+                        //pēc intensitātes<128 un iekrāsojam pikseli melnā
+                        //krāsa-fons, jeb baltā-robeža
+                        if (G < 128) { imgnew[x, y].I = 0; }
+                        else { imgnew[x, y].I = 255; }
+                    }
+                }
+            }
         }
 
         public void contrastByHistogram(string mode, int value, bool isStretch)
@@ -96,7 +195,7 @@ namespace IKAA_171rdb115_2
                 dBegin = hist2.FindFirst(hRGBI, value);
                 dEnd = hist2.FindLast(hRGBI, value);
             }
-            
+
             int dOriginal = dEnd - dBegin;
             int dDesired = 255;
             double k = dDesired / (double)dOriginal;
@@ -124,7 +223,7 @@ namespace IKAA_171rdb115_2
                     {
                         imghsvnew[x, y].S = (byte)Math.Min(255, Math.Max(0, k * (imghsv[x, y].S - dBegin)));
                     }
-                    else if(mode == "V")
+                    else if (mode == "V")
                     {
                         imghsvnew[x, y].V = (byte)Math.Min(255, Math.Max(0, k * (imghsv[x, y].V - dBegin)));
                     }
@@ -207,6 +306,7 @@ namespace IKAA_171rdb115_2
                                     line[3 * x] = imgnew[x, y].B; //blue
                                     line[3 * x + 1] = imgnew[x, y].G; //green
                                     line[3 * x + 2] = imgnew[x, y].R; //red
+                                    imgnew[x, y].I = Convert.ToByte(0.0722f * imgnew[x, y].B + 0.7152f * imgnew[x, y].G + 0.2126f * imgnew[x, y].R);
                                     break;
                                 } //rgb
                             case "StretchR":
@@ -239,14 +339,14 @@ namespace IKAA_171rdb115_2
                                 }
                             case "StretchHSV":
                                 {
-                                    line[3 * x] = img[x,y].hsvToRGB(imghsv[x,y].H, imghsvnew[x,y].S, imghsvnew[x,y].V).B; //blue
+                                    line[3 * x] = img[x, y].hsvToRGB(imghsv[x, y].H, imghsvnew[x, y].S, imghsvnew[x, y].V).B; //blue
                                     line[3 * x + 1] = img[x, y].hsvToRGB(imghsv[x, y].H, imghsvnew[x, y].S, imghsvnew[x, y].V).G; //green
                                     line[3 * x + 2] = img[x, y].hsvToRGB(imghsv[x, y].H, imghsvnew[x, y].S, imghsvnew[x, y].V).R; //red
                                     break;
                                 }
                             case "StretchS":
                                 {
-                                    line[3 * x] = imghsvnew[x,y].S; //blue
+                                    line[3 * x] = imghsvnew[x, y].S; //blue
                                     line[3 * x + 1] = imghsvnew[x, y].S; //green
                                     line[3 * x + 2] = imghsvnew[x, y].S; //red
                                     break;
@@ -362,7 +462,7 @@ namespace IKAA_171rdb115_2
                     Marshal.Copy(line, 0, ptr, line.Length);
                 }
                 bmp.UnlockBits(bmpData);
-                hist2.readHistogram(imgnew, imghsv);
+                hist2.readHistogramHSV(imgnew, imghsv);
                 watchdraw.Stop();
                 var elapsedMs = watchdraw.ElapsedMilliseconds;
                 Console.WriteLine("Image draw time " + elapsedMs);

@@ -64,7 +64,30 @@ namespace IKAA_171rdb115_2
             }
         }
 
-        public void readHistogram(PixelClassRGB[,] imgArray, PixelClassHSV[,] imgArrayHSV)
+        public void readHistogramRGB(PixelClassRGB[,] imgArray)
+        {
+            eraseHistogram();
+            for (int x = 0; x < imgArray.GetLength(0); x++)
+            {
+                for (int y = 0; y < imgArray.GetLength(1); y++)
+                {
+                    hR[imgArray[x, y].R]++;
+                    hG[imgArray[x, y].G]++;
+                    hB[imgArray[x, y].B]++;
+                    hI[imgArray[x, y].I]++;
+                }
+            }
+
+            for (int i = 0; i < 256; i++)
+            {
+                hR[256] = Math.Max(hR[i], hR[256]);
+                hG[256] = Math.Max(hG[i], hG[256]);
+                hB[256] = Math.Max(hB[i], hB[256]);
+                hI[256] = Math.Max(hI[i], hI[256]);
+            }
+        }
+
+        public void readHistogramHSV(PixelClassRGB[,] imgArray, PixelClassHSV[,] imgArrayHSV)
         {
             eraseHistogram();
             for (int x = 0; x < imgArray.GetLength(0); x++)
