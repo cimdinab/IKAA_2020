@@ -9,7 +9,7 @@ namespace IKAA_171rdb115_2
     public class Filter
     {
         public int[,] F; //vektors ar filtra vērtībam
-        public int K; // koefficients
+        public int K; // koeficients
         public int[,] Fr;
         public Filter()
         {

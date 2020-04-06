@@ -551,7 +551,67 @@ namespace IKAA_171rdb115_2
 
         }
 
-        private void sobelOperator3x3ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void sobelRGBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter();
+                imgData.filters2 = new Filter();
+                imgData.filters.xFilter3x3Sobel();
+                imgData.filters2.yFilter3x3Sobel();
+                radioButton1.Checked = true; //RGB
+                radioButton3.Checked = true; //Composite
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Sobel", "RGB");
+                pictureBox2.Image = imgData.drawImage("StretchRGB");
+            }
+        }
+
+        private void sobelRedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter();
+                imgData.filters2 = new Filter();
+                imgData.filters.xFilter3x3Sobel();
+                imgData.filters2.yFilter3x3Sobel();
+                radioButton1.Checked = true; //RGB
+                radioButton4.Checked = true; //Red
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Sobel", "RGB");
+                pictureBox2.Image = imgData.drawImage("StretchR");
+            }
+        }
+
+        private void sobelGreenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter();
+                imgData.filters2 = new Filter();
+                imgData.filters.xFilter3x3Sobel();
+                imgData.filters2.yFilter3x3Sobel();
+                radioButton1.Checked = true; //RGB
+                radioButton5.Checked = true; //Green
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Sobel", "RGB");
+                pictureBox2.Image = imgData.drawImage("StretchG");
+            }
+        }
+
+        private void sobelBlueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter();
+                imgData.filters2 = new Filter();
+                imgData.filters.xFilter3x3Sobel();
+                imgData.filters2.yFilter3x3Sobel();
+                radioButton1.Checked = true; //RGB
+                radioButton6.Checked = true; //Blue
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Sobel", "RGB");
+                pictureBox2.Image = imgData.drawImage("StretchB");
+            }
+        }
+
+        private void sobelIntensityToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (imgData.img != null)
             {
@@ -561,14 +621,72 @@ namespace IKAA_171rdb115_2
                 imgData.filters2.yFilter3x3Sobel();
                 radioButton1.Checked = true; //RGB
                 radioButton7.Checked = true; //Intensity
-                //izaucam metodi, kas meklē robežas
-                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Sobel");
-                //pārzīmējam attēlu
-                pictureBox2.Image = imgData.drawImage("StretchI"); //vai Intensity
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Sobel", "Intensity");
+                pictureBox2.Image = imgData.drawImage("StretchI");
             }
         }
 
-        private void prewittOperator3x3ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void prewittRGBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter();
+                imgData.filters2 = new Filter();
+                imgData.filters.xFilter3x3Prewitt();
+                imgData.filters2.yFilter3x3Prewitt();
+                radioButton1.Checked = true; //RGB
+                radioButton3.Checked = true; //Composite
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Prewitt", "RGB");
+                pictureBox2.Image = imgData.drawImage("StretchRGB");
+            }
+        }
+
+        private void prewittRedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter();
+                imgData.filters2 = new Filter();
+                imgData.filters.xFilter3x3Prewitt();
+                imgData.filters2.yFilter3x3Prewitt();
+                radioButton1.Checked = true; //RGB
+                radioButton4.Checked = true; //Red
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Prewitt", "RGB");
+                pictureBox2.Image = imgData.drawImage("StretchR");
+            }
+        }
+
+        private void prewittGreenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter();
+                imgData.filters2 = new Filter();
+                imgData.filters.xFilter3x3Prewitt();
+                imgData.filters2.yFilter3x3Prewitt();
+                radioButton1.Checked = true; //RGB
+                radioButton5.Checked = true; //Green
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Prewitt", "RGB");
+                pictureBox2.Image = imgData.drawImage("StretchG");
+            }
+        }
+
+        private void prewittBlueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter();
+                imgData.filters2 = new Filter();
+                imgData.filters.xFilter3x3Prewitt();
+                imgData.filters2.yFilter3x3Prewitt();
+                radioButton1.Checked = true; //RGB
+                radioButton6.Checked = true; //Blue
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Prewitt", "RGB");
+                pictureBox2.Image = imgData.drawImage("StretchB");
+            }
+        }
+
+        private void prewittIntensityToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (imgData.img != null)
             {
@@ -578,14 +696,72 @@ namespace IKAA_171rdb115_2
                 imgData.filters2.yFilter3x3Prewitt();
                 radioButton1.Checked = true; //RGB
                 radioButton7.Checked = true; //Intensity
-                //izaucam metodi, kas meklē robežas
-                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Prewitt");
-                //pārzīmējam attēlu
-                pictureBox2.Image = imgData.drawImage("StretchI"); //vai Intensity
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Prewitt", "Intensity");
+                pictureBox2.Image = imgData.drawImage("StretchI");
             }
         }
 
-        private void robertsOperatorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void robertsRGBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter();
+                imgData.filters2 = new Filter();
+                imgData.filters.xFilter2x2Roberts();
+                imgData.filters2.yFilter2x2Roberts();
+                radioButton1.Checked = true; //RGB
+                radioButton3.Checked = true; //Composite
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Roberts", "RGB");
+                pictureBox2.Image = imgData.drawImage("StretchRGB");
+            }
+        }
+
+        private void robertsRedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter();
+                imgData.filters2 = new Filter();
+                imgData.filters.xFilter2x2Roberts();
+                imgData.filters2.yFilter2x2Roberts();
+                radioButton1.Checked = true; //RGB
+                radioButton4.Checked = true; //Red
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Roberts", "RGB");
+                pictureBox2.Image = imgData.drawImage("StretchR");
+            }
+        }
+
+        private void robertsGreenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter();
+                imgData.filters2 = new Filter();
+                imgData.filters.xFilter2x2Roberts();
+                imgData.filters2.yFilter2x2Roberts();
+                radioButton1.Checked = true; //RGB
+                radioButton5.Checked = true; //Green
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Roberts", "RGB");
+                pictureBox2.Image = imgData.drawImage("StretchG");
+            }
+        }
+
+        private void robertsBlueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                imgData.filters = new Filter();
+                imgData.filters2 = new Filter();
+                imgData.filters.xFilter2x2Roberts();
+                imgData.filters2.yFilter2x2Roberts();
+                radioButton1.Checked = true; //RGB
+                radioButton6.Checked = true; //Blue
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Roberts", "RGB");
+                pictureBox2.Image = imgData.drawImage("StretchB");
+            }
+        }
+
+        private void robertsIntensityToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (imgData.img != null)
             {
@@ -595,10 +771,8 @@ namespace IKAA_171rdb115_2
                 imgData.filters2.yFilter2x2Roberts();
                 radioButton1.Checked = true; //RGB
                 radioButton7.Checked = true; //Intensity
-                //izaucam metodi, kas meklē robežas
-                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Roberts");
-                //pārzīmējam attēlu
-                pictureBox2.Image = imgData.drawImage("StretchI"); //vai Intensity
+                imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Roberts", "Intensity");
+                pictureBox2.Image = imgData.drawImage("StretchI");
             }
         }
     }

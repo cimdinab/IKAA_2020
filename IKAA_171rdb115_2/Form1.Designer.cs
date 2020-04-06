@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea17 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend17 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea18 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend18 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -85,8 +85,23 @@
             this.segmentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.edgeDetectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sobelOperator3x3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sobelRGBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sobelRedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sobelGreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sobelBlueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sobelIntensityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prewittOperator3x3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prewittRGBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prewittRedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prewittGreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prewittBlueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prewittIntensityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.robertsOperatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.robertsRGBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.robertsRedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.robertsGreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.robertsBlueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.robertsIntensityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -397,32 +412,32 @@
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea17.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea17);
+            legend17.Name = "Legend1";
+            this.chart1.Legends.Add(legend17);
             this.chart1.Location = new System.Drawing.Point(12, 487);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
+            series17.ChartArea = "ChartArea1";
+            series17.Legend = "Legend1";
+            series17.Name = "Series1";
+            this.chart1.Series.Add(series17);
             this.chart1.Size = new System.Drawing.Size(450, 166);
             this.chart1.TabIndex = 15;
             this.chart1.Text = "chart1";
             // 
             // chart2
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart2.Legends.Add(legend4);
+            chartArea18.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea18);
+            legend18.Name = "Legend1";
+            this.chart2.Legends.Add(legend18);
             this.chart2.Location = new System.Drawing.Point(468, 487);
             this.chart2.Name = "chart2";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chart2.Series.Add(series4);
+            series18.ChartArea = "ChartArea1";
+            series18.Legend = "Legend1";
+            series18.Name = "Series1";
+            this.chart2.Series.Add(series18);
             this.chart2.Size = new System.Drawing.Size(450, 166);
             this.chart2.TabIndex = 16;
             this.chart2.Text = "chart2";
@@ -504,7 +519,7 @@
             this.filter2blurToolStripMenuItem,
             this.filter3blurToolStripMenuItem});
             this.blurFilter1ToolStripMenuItem.Name = "blurFilter1ToolStripMenuItem";
-            this.blurFilter1ToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.blurFilter1ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.blurFilter1ToolStripMenuItem.Text = "Blur";
             // 
             // filter1blurToolStripMenuItem
@@ -535,7 +550,7 @@
             this.filter2sharpenToolStripMenuItem1,
             this.filter3sharpenToolStripMenuItem1});
             this.sharpenToolStripMenuItem.Name = "sharpenToolStripMenuItem";
-            this.sharpenToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.sharpenToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.sharpenToolStripMenuItem.Text = "Sharpen";
             // 
             // filter1sharpenToolStripMenuItem1
@@ -566,7 +581,7 @@
             this.median5x5ToolStripMenuItem,
             this.median7x7ToolStripMenuItem});
             this.medianToolStripMenuItem.Name = "medianToolStripMenuItem";
-            this.medianToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.medianToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.medianToolStripMenuItem.Text = "Median";
             // 
             // median3x3ToolStripMenuItem
@@ -610,24 +625,144 @@
             // 
             // sobelOperator3x3ToolStripMenuItem
             // 
+            this.sobelOperator3x3ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sobelRGBToolStripMenuItem,
+            this.sobelRedToolStripMenuItem,
+            this.sobelGreenToolStripMenuItem,
+            this.sobelBlueToolStripMenuItem,
+            this.sobelIntensityToolStripMenuItem});
             this.sobelOperator3x3ToolStripMenuItem.Name = "sobelOperator3x3ToolStripMenuItem";
             this.sobelOperator3x3ToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
             this.sobelOperator3x3ToolStripMenuItem.Text = "Sobel Operator (3x3)";
-            this.sobelOperator3x3ToolStripMenuItem.Click += new System.EventHandler(this.sobelOperator3x3ToolStripMenuItem_Click);
+            // 
+            // sobelRGBToolStripMenuItem
+            // 
+            this.sobelRGBToolStripMenuItem.Name = "sobelRGBToolStripMenuItem";
+            this.sobelRGBToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.sobelRGBToolStripMenuItem.Text = "RGB";
+            this.sobelRGBToolStripMenuItem.Click += new System.EventHandler(this.sobelRGBToolStripMenuItem_Click);
+            // 
+            // sobelRedToolStripMenuItem
+            // 
+            this.sobelRedToolStripMenuItem.Name = "sobelRedToolStripMenuItem";
+            this.sobelRedToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.sobelRedToolStripMenuItem.Text = "Red";
+            this.sobelRedToolStripMenuItem.Click += new System.EventHandler(this.sobelRedToolStripMenuItem_Click);
+            // 
+            // sobelGreenToolStripMenuItem
+            // 
+            this.sobelGreenToolStripMenuItem.Name = "sobelGreenToolStripMenuItem";
+            this.sobelGreenToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.sobelGreenToolStripMenuItem.Text = "Green";
+            this.sobelGreenToolStripMenuItem.Click += new System.EventHandler(this.sobelGreenToolStripMenuItem_Click);
+            // 
+            // sobelBlueToolStripMenuItem
+            // 
+            this.sobelBlueToolStripMenuItem.Name = "sobelBlueToolStripMenuItem";
+            this.sobelBlueToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.sobelBlueToolStripMenuItem.Text = "Blue";
+            this.sobelBlueToolStripMenuItem.Click += new System.EventHandler(this.sobelBlueToolStripMenuItem_Click);
+            // 
+            // sobelIntensityToolStripMenuItem
+            // 
+            this.sobelIntensityToolStripMenuItem.Name = "sobelIntensityToolStripMenuItem";
+            this.sobelIntensityToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.sobelIntensityToolStripMenuItem.Text = "Intensity";
+            this.sobelIntensityToolStripMenuItem.Click += new System.EventHandler(this.sobelIntensityToolStripMenuItem_Click);
             // 
             // prewittOperator3x3ToolStripMenuItem
             // 
+            this.prewittOperator3x3ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.prewittRGBToolStripMenuItem,
+            this.prewittRedToolStripMenuItem,
+            this.prewittGreenToolStripMenuItem,
+            this.prewittBlueToolStripMenuItem,
+            this.prewittIntensityToolStripMenuItem});
             this.prewittOperator3x3ToolStripMenuItem.Name = "prewittOperator3x3ToolStripMenuItem";
             this.prewittOperator3x3ToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
             this.prewittOperator3x3ToolStripMenuItem.Text = "Prewitt Operator (3x3)";
-            this.prewittOperator3x3ToolStripMenuItem.Click += new System.EventHandler(this.prewittOperator3x3ToolStripMenuItem_Click);
+            // 
+            // prewittRGBToolStripMenuItem
+            // 
+            this.prewittRGBToolStripMenuItem.Name = "prewittRGBToolStripMenuItem";
+            this.prewittRGBToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.prewittRGBToolStripMenuItem.Text = "RGB";
+            this.prewittRGBToolStripMenuItem.Click += new System.EventHandler(this.prewittRGBToolStripMenuItem_Click);
+            // 
+            // prewittRedToolStripMenuItem
+            // 
+            this.prewittRedToolStripMenuItem.Name = "prewittRedToolStripMenuItem";
+            this.prewittRedToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.prewittRedToolStripMenuItem.Text = "Red";
+            this.prewittRedToolStripMenuItem.Click += new System.EventHandler(this.prewittRedToolStripMenuItem_Click);
+            // 
+            // prewittGreenToolStripMenuItem
+            // 
+            this.prewittGreenToolStripMenuItem.Name = "prewittGreenToolStripMenuItem";
+            this.prewittGreenToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.prewittGreenToolStripMenuItem.Text = "Green";
+            this.prewittGreenToolStripMenuItem.Click += new System.EventHandler(this.prewittGreenToolStripMenuItem_Click);
+            // 
+            // prewittBlueToolStripMenuItem
+            // 
+            this.prewittBlueToolStripMenuItem.Name = "prewittBlueToolStripMenuItem";
+            this.prewittBlueToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.prewittBlueToolStripMenuItem.Text = "Blue";
+            this.prewittBlueToolStripMenuItem.Click += new System.EventHandler(this.prewittBlueToolStripMenuItem_Click);
+            // 
+            // prewittIntensityToolStripMenuItem
+            // 
+            this.prewittIntensityToolStripMenuItem.Name = "prewittIntensityToolStripMenuItem";
+            this.prewittIntensityToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.prewittIntensityToolStripMenuItem.Text = "Intensity";
+            this.prewittIntensityToolStripMenuItem.Click += new System.EventHandler(this.prewittIntensityToolStripMenuItem_Click);
             // 
             // robertsOperatorToolStripMenuItem
             // 
+            this.robertsOperatorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.robertsRGBToolStripMenuItem,
+            this.robertsRedToolStripMenuItem,
+            this.robertsGreenToolStripMenuItem,
+            this.robertsBlueToolStripMenuItem,
+            this.robertsIntensityToolStripMenuItem});
             this.robertsOperatorToolStripMenuItem.Name = "robertsOperatorToolStripMenuItem";
             this.robertsOperatorToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
             this.robertsOperatorToolStripMenuItem.Text = "Roberts Operator (2x2)";
-            this.robertsOperatorToolStripMenuItem.Click += new System.EventHandler(this.robertsOperatorToolStripMenuItem_Click);
+            // 
+            // robertsRGBToolStripMenuItem
+            // 
+            this.robertsRGBToolStripMenuItem.Name = "robertsRGBToolStripMenuItem";
+            this.robertsRGBToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.robertsRGBToolStripMenuItem.Text = "RGB";
+            this.robertsRGBToolStripMenuItem.Click += new System.EventHandler(this.robertsRGBToolStripMenuItem_Click);
+            // 
+            // robertsRedToolStripMenuItem
+            // 
+            this.robertsRedToolStripMenuItem.Name = "robertsRedToolStripMenuItem";
+            this.robertsRedToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.robertsRedToolStripMenuItem.Text = "Red";
+            this.robertsRedToolStripMenuItem.Click += new System.EventHandler(this.robertsRedToolStripMenuItem_Click);
+            // 
+            // robertsGreenToolStripMenuItem
+            // 
+            this.robertsGreenToolStripMenuItem.Name = "robertsGreenToolStripMenuItem";
+            this.robertsGreenToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.robertsGreenToolStripMenuItem.Text = "Green";
+            this.robertsGreenToolStripMenuItem.Click += new System.EventHandler(this.robertsGreenToolStripMenuItem_Click);
+            // 
+            // robertsBlueToolStripMenuItem
+            // 
+            this.robertsBlueToolStripMenuItem.Name = "robertsBlueToolStripMenuItem";
+            this.robertsBlueToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.robertsBlueToolStripMenuItem.Text = "Blue";
+            this.robertsBlueToolStripMenuItem.Click += new System.EventHandler(this.robertsBlueToolStripMenuItem_Click);
+            // 
+            // robertsIntensityToolStripMenuItem
+            // 
+            this.robertsIntensityToolStripMenuItem.Name = "robertsIntensityToolStripMenuItem";
+            this.robertsIntensityToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.robertsIntensityToolStripMenuItem.Text = "Intensity";
+            this.robertsIntensityToolStripMenuItem.Click += new System.EventHandler(this.robertsIntensityToolStripMenuItem_Click);
             // 
             // trackBar1
             // 
@@ -783,6 +918,21 @@
         private System.Windows.Forms.ToolStripMenuItem sobelOperator3x3ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem prewittOperator3x3ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem robertsOperatorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sobelRGBToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sobelRedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sobelGreenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sobelBlueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sobelIntensityToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prewittRGBToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prewittRedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prewittGreenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prewittBlueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prewittIntensityToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem robertsRGBToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem robertsRedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem robertsGreenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem robertsBlueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem robertsIntensityToolStripMenuItem;
     }
 }
 
