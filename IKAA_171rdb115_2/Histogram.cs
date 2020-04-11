@@ -118,6 +118,47 @@ namespace IKAA_171rdb115_2
             }
         }
 
+        public int calculateAutomaticThreshold(int[] H)
+        {
+            // meklējam sākumu
+            int Dbegin = FindFirst(H, 0);
+            int Dend = FindLast(H, 0);
+            //meklājam beigas histogrammai
+
+            int T = (Dend - Dbegin) / 2; //meklējam vidējo vērtību - sākotnējo slieksni
+            int Tprevious = 0; //iepriekšējais slieksnis
+            while (T != Tprevious)
+            {
+                Tprevious = T;
+                int m1 = 0;
+                int m2 = 0;
+                int p1 = 0;
+                int p2 = 0;
+
+                for (int i = Dbegin; i < T; i++)
+                {
+                    p1 += H[i]; //pikseļu skaits
+                    m1 += (i * H[i]); //rēķinām pikseļu intensitāšu vērtību summu
+                }
+
+                if (p1 == 0) { p1 = 1; }
+                m1 /= p1; //rēķinām vidējo intensitāti visiem pikseļiem, kuriem intensitāte <T
+
+                for (int i = T; i <= Dend; i++)
+                {
+                    p2 += H[i]; //pikseļu skaits
+                    m2 += (i * H[i]); //rēķinām pikseļu intensitāšu vērtību summu
+                }
+
+
+                if (p2 == 0) { p2 = 1; }
+                m2 /= p2; //rēķinām vidējo intensitāti visiem pikseļiem, kuriem intensitāte >T
+
+                T = (m1 + m2) / 2; //izskaitļojam jaunu sliekšņa vērtību
+            }
+            return T;
+        }
+
         public void drawHistogram(Chart chart, string Channels)
         {
             chart.Series.Clear();

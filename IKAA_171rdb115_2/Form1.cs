@@ -7,6 +7,8 @@ namespace IKAA_171rdb115_2
     public partial class Form1 : Form
     {
         public imgData imgData = new imgData();
+        private string thresholdmode = "";
+        private string colormode = "";
         public Form1()
         {
             InitializeComponent();
@@ -773,6 +775,505 @@ namespace IKAA_171rdb115_2
                 radioButton7.Checked = true; //Intensity
                 imgData.edgeSegmentation(imgData.filters, imgData.filters2, "Roberts", "Intensity");
                 pictureBox2.Image = imgData.drawImage("StretchI");
+            }
+        }
+
+        private void adaptiveVerticalIntensityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                bool isAutomatic = true;
+                colormode = "StretchI";
+                thresholdmode = "Vertical";
+                radioButton1.Checked = true; //RGB
+                radioButton7.Checked = true; //Intensity
+                imgData.histogramSegmentation(isAutomatic, 0, 0, colormode, thresholdmode); //segmentējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchI"); //pārzīmējam rezultātu
+                label10.Text = "Threshold: " + Convert.ToString(imgData.hist2.calculateAutomaticThreshold(imgData.hist2.hI));
+                groupBox5.Visible = true;
+                trackBar2.Visible = false; // threshold 1 trackbar
+                trackBar3.Visible = false; // threshold 2 trackbar
+                label11.Visible = false; // threshold 2 value
+                label12.Visible = false; // trackbar 1 0
+                label13.Visible = false; // trackbar 2 0
+                label14.Visible = false; // trackbar 1 255
+                label15.Visible = false; // trackbar 2 255
+            }
+        }
+
+        private void adaptiveVerticalRedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                bool isAutomatic = true;
+                colormode = "StretchR";
+                thresholdmode = "Vertical";
+                radioButton1.Checked = true; //RGB
+                radioButton4.Checked = true; //Red
+                imgData.histogramSegmentation(isAutomatic, 0, 0, colormode, thresholdmode); //segmentējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchR"); //pārzīmējam rezultātu
+                label10.Text = "Threshold: " + Convert.ToString(imgData.hist2.calculateAutomaticThreshold(imgData.hist2.hR));
+                groupBox5.Visible = true;
+                trackBar2.Visible = false; // threshold 1 trackbar
+                trackBar3.Visible = false; // threshold 2 trackbar
+                label11.Visible = false; // threshold 2 value
+                label12.Visible = false; // trackbar 1 0
+                label13.Visible = false; // trackbar 2 0
+                label14.Visible = false; // trackbar 1 255
+                label15.Visible = false; // trackbar 2 255
+            }
+        }
+
+        private void adaptiveVerticalGreenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                bool isAutomatic = true;
+                colormode = "StretchG";
+                thresholdmode = "Vertical";
+                radioButton1.Checked = true; //RGB
+                radioButton5.Checked = true; //Green
+                imgData.histogramSegmentation(isAutomatic, 0, 0, colormode, thresholdmode); //segmentējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchG"); //pārzīmējam rezultātu
+                label10.Text = "Threshold: " + Convert.ToString(imgData.hist2.calculateAutomaticThreshold(imgData.hist2.hG));
+                groupBox5.Visible = true;
+                trackBar2.Visible = false; // threshold 1 trackbar
+                trackBar3.Visible = false; // threshold 2 trackbar
+                label11.Visible = false; // threshold 2 value
+                label12.Visible = false; // trackbar 1 0
+                label13.Visible = false; // trackbar 2 0
+                label14.Visible = false; // trackbar 1 255
+                label15.Visible = false; // trackbar 2 255
+            }
+        }
+
+        private void adaptiveVerticalBlueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                bool isAutomatic = true;
+                colormode = "StretchB";
+                thresholdmode = "Vertical";
+                radioButton1.Checked = true; //RGB
+                radioButton6.Checked = true; //Blue
+                imgData.histogramSegmentation(isAutomatic, 0, 0, colormode, thresholdmode); //segmentējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchB"); //pārzīmējam rezultātu
+                label10.Text = "Threshold: " + Convert.ToString(imgData.hist2.calculateAutomaticThreshold(imgData.hist2.hB));
+                groupBox5.Visible = true;
+                trackBar2.Visible = false; // threshold 1 trackbar
+                trackBar3.Visible = false; // threshold 2 trackbar
+                label11.Visible = false; // threshold 2 value
+                label12.Visible = false; // trackbar 1 0
+                label13.Visible = false; // trackbar 2 0
+                label14.Visible = false; // trackbar 1 255
+                label15.Visible = false; // trackbar 2 255
+            }
+        }
+
+        private void verticalManualIntensityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                bool isAutomatic = false;
+                colormode = "StretchI";
+                thresholdmode = "Vertical";
+                int T = trackBar2.Value;
+                radioButton1.Checked = true; //RGB
+                radioButton7.Checked = true; //Intensity
+                trackBar2.Maximum = 255;
+                label14.Text = "255";
+                trackBar2.Minimum = 0;
+                label12.Text = "0";
+                imgData.histogramSegmentation(isAutomatic, T, 0, colormode, thresholdmode); //segmentējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchI"); //pārzīmējam rezultātu
+                label10.Text = "Threshold: " + Convert.ToString(trackBar2.Value);
+                groupBox5.Visible = true;
+                trackBar2.Visible = true; // threshold 1 trackbar
+                trackBar3.Visible = false; // threshold 2 trackbar
+                label11.Visible = false; // threshold 2 value
+                label12.Visible = true; // trackbar 1 0
+                label13.Visible = false; // trackbar 2 0
+                label14.Visible = true; // trackbar 1 255
+                label15.Visible = false; // trackbar 2 255
+            }
+        }
+
+        private void verticalManualRedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                bool isAutomatic = false;
+                colormode = "StretchR";
+                thresholdmode = "Vertical";
+                int T = trackBar2.Value;
+                radioButton1.Checked = true; //RGB
+                radioButton4.Checked = true; //Red
+                trackBar2.Maximum = 255;
+                label14.Text = "255";
+                trackBar2.Minimum = 0;
+                label12.Text = "0";
+                imgData.histogramSegmentation(isAutomatic, T, 0, colormode, thresholdmode); //segmentējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchR"); //pārzīmējam rezultātu
+                label10.Text = "Threshold: " + Convert.ToString(trackBar2.Value);
+                groupBox5.Visible = true;
+                trackBar2.Visible = true; // threshold 1 trackbar
+                trackBar3.Visible = false; // threshold 2 trackbar
+                label11.Visible = false; // threshold 2 value
+                label12.Visible = true; // trackbar 1 0
+                label13.Visible = false; // trackbar 2 0
+                label14.Visible = true; // trackbar 1 255
+                label15.Visible = false; // trackbar 2 255
+            }
+        }
+
+        private void verticalManualGreenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                bool isAutomatic = false;
+                colormode = "StretchG";
+                thresholdmode = "Vertical";
+                int T = trackBar2.Value;
+                radioButton1.Checked = true; //RGB
+                radioButton5.Checked = true; //Green
+                trackBar2.Maximum = 255;
+                label14.Text = "255";
+                trackBar2.Minimum = 0;
+                label12.Text = "0";
+                imgData.histogramSegmentation(isAutomatic, T, 0, colormode, thresholdmode); //segmentējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchG"); //pārzīmējam rezultātu
+                label10.Text = "Threshold: " + Convert.ToString(trackBar2.Value);
+                groupBox5.Visible = true;
+                trackBar2.Visible = true; // threshold 1 trackbar
+                trackBar3.Visible = false; // threshold 2 trackbar
+                label11.Visible = false; // threshold 2 value
+                label12.Visible = true; // trackbar 1 0
+                label13.Visible = false; // trackbar 2 0
+                label14.Visible = true; // trackbar 1 255
+                label15.Visible = false; // trackbar 2 255
+            }
+        }
+
+        private void verticalManualBlueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                bool isAutomatic = false;
+                colormode = "StretchB";
+                thresholdmode = "Vertical";
+                int T = trackBar2.Value;
+                radioButton1.Checked = true; //RGB
+                radioButton6.Checked = true; //Blue
+                trackBar2.Maximum = 255;
+                label14.Text = "255";
+                trackBar2.Minimum = 0;
+                label12.Text = "0";
+                imgData.histogramSegmentation(isAutomatic, T, 0, colormode, thresholdmode); //segmentējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchB"); //pārzīmējam rezultātu
+                label10.Text = "Threshold: " + Convert.ToString(trackBar2.Value);
+                groupBox5.Visible = true;
+                trackBar2.Visible = true; // threshold 1 trackbar
+                trackBar3.Visible = false; // threshold 2 trackbar
+                label11.Visible = false; // threshold 2 value
+                label12.Visible = true; // trackbar 1 0
+                label13.Visible = false; // trackbar 2 0
+                label14.Visible = true; // trackbar 1 255
+                label15.Visible = false; // trackbar 2 255
+            }
+        }
+
+        private void horizontalIntensityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                bool isAutomatic = false;
+                colormode = "StretchI";
+                thresholdmode = "Horizontal";
+                trackBar2.Maximum = imgData.hist2.hI[256];
+                label14.Text = Convert.ToString(imgData.hist2.hI[256]);
+                trackBar2.Minimum = 0;
+                label12.Text = "0";
+                int T = trackBar2.Value;
+                radioButton1.Checked = true; //RGB
+                radioButton7.Checked = true; //Intensity
+                imgData.histogramSegmentation(isAutomatic, T, 0, colormode, thresholdmode); //segmentējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchI"); //pārzīmējam rezultātu
+                label10.Text = "Threshold: " + Convert.ToString(trackBar2.Value);
+                groupBox5.Visible = true;
+                trackBar2.Visible = true; // threshold 1 trackbar
+                trackBar3.Visible = false; // threshold 2 trackbar
+                label11.Visible = false; // threshold 2 value
+                label12.Visible = true; // trackbar 1 0
+                label13.Visible = false; // trackbar 2 0
+                label14.Visible = true; // trackbar 1 255
+                label15.Visible = false; // trackbar 2 255
+            }
+        }
+
+        private void horizontalRedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                bool isAutomatic = false;
+                colormode = "StretchR";
+                thresholdmode = "Horizontal";
+                trackBar2.Maximum = imgData.hist2.hR[256];
+                label14.Text = Convert.ToString(imgData.hist2.hR[256]);
+                trackBar2.Minimum = 0;
+                label12.Text = "0";
+                int T = trackBar2.Value;
+                radioButton1.Checked = true; //RGB
+                radioButton4.Checked = true; //Red
+                imgData.histogramSegmentation(isAutomatic, T, 0, colormode, thresholdmode); //segmentējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchR"); //pārzīmējam rezultātu
+                label10.Text = "Threshold: " + Convert.ToString(trackBar2.Value);
+                groupBox5.Visible = true;
+                trackBar2.Visible = true; // threshold 1 trackbar
+                trackBar3.Visible = false; // threshold 2 trackbar
+                label11.Visible = false; // threshold 2 value
+                label12.Visible = true; // trackbar 1 0
+                label13.Visible = false; // trackbar 2 0
+                label14.Visible = true; // trackbar 1 255
+                label15.Visible = false; // trackbar 2 255
+            }
+        }
+
+        private void horizontalGreenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                bool isAutomatic = false;
+                colormode = "StretchG";
+                thresholdmode = "Horizontal";
+                trackBar2.Maximum = imgData.hist2.hG[256];
+                label14.Text = Convert.ToString(imgData.hist2.hG[256]);
+                trackBar2.Minimum = 0;
+                label12.Text = "0";
+                int T = trackBar2.Value;
+                radioButton1.Checked = true; //RGB
+                radioButton5.Checked = true; //Green
+                imgData.histogramSegmentation(isAutomatic, T, 0, colormode, thresholdmode); //segmentējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchG"); //pārzīmējam rezultātu
+                //tagad es gribu redzēt, kur man uz histogrammas atrodas vertikālais slieksnis, izvadām vērtību label laukā - intensitātei
+                label10.Text = "Threshold: " + Convert.ToString(trackBar2.Value);
+                groupBox5.Visible = true;
+                trackBar2.Visible = true; // threshold 1 trackbar
+                trackBar3.Visible = false; // threshold 2 trackbar
+                label11.Visible = false; // threshold 2 value
+                label12.Visible = true; // trackbar 1 0
+                label13.Visible = false; // trackbar 2 0
+                label14.Visible = true; // trackbar 1 255
+                label15.Visible = false; // trackbar 2 255
+            }
+        }
+
+        private void horizontalBlueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                bool isAutomatic = false;
+                colormode = "StretchB";
+                thresholdmode = "Horizontal";
+                trackBar2.Maximum = imgData.hist2.hB[256];
+                label14.Text = Convert.ToString(imgData.hist2.hB[256]);
+                trackBar2.Minimum = 0;
+                label12.Text = "0";
+                int T = trackBar2.Value;
+                radioButton1.Checked = true; //RGB
+                radioButton6.Checked = true; //Blue
+                imgData.histogramSegmentation(isAutomatic, T, 0, colormode, thresholdmode); //segmentējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchB"); //pārzīmējam rezultātu
+                //tagad es gribu redzēt, kur man uz histogrammas atrodas vertikālais slieksnis, izvadām vērtību label laukā - intensitātei
+                label10.Text = "Threshold: " + Convert.ToString(trackBar2.Value);
+                groupBox5.Visible = true;
+                trackBar2.Visible = true; // threshold 1 trackbar
+                trackBar3.Visible = false; // threshold 2 trackbar
+                label11.Visible = false; // threshold 2 value
+                label12.Visible = true; // trackbar 1 0
+                label13.Visible = false; // trackbar 2 0
+                label14.Visible = true; // trackbar 1 255
+                label15.Visible = false; // trackbar 2 255
+            }
+        }
+
+        private void twoVerticalIntensityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                bool isAutomatic = false;
+                colormode = "StretchI";
+                thresholdmode = "Two";
+                trackBar2.Maximum = 255;
+                label14.Text = "255";
+                trackBar2.Minimum = 0;
+                label12.Text = "0";
+                trackBar2.Value = 30;
+                trackBar3.Value = 210;
+                int T = trackBar2.Value;
+                int T2 = trackBar3.Value;
+                radioButton1.Checked = true; //RGB
+                radioButton7.Checked = true; //Intensity
+                imgData.histogramSegmentation(isAutomatic, T, T2, colormode, thresholdmode); //segmentējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchI"); //pārzīmējam rezultātu
+                //tagad es gribu redzēt, kur man uz histogrammas atrodas vertikālais slieksnis, izvadām vērtību label laukā - intensitātei
+                label10.Text = "Threshold 1: " + Convert.ToString(trackBar2.Value);
+                label11.Text = "Threshold 2: " + Convert.ToString(trackBar3.Value);
+                groupBox5.Visible = true;
+                trackBar2.Visible = true; // threshold 1 trackbar
+                trackBar3.Visible = true; // threshold 2 trackbar
+                label11.Visible = true; // threshold 2 value
+                label12.Visible = true; // trackbar 1 0
+                label13.Visible = true; // trackbar 2 0
+                label14.Visible = true; // trackbar 1 255
+                label15.Visible = true; // trackbar 2 255
+            }
+        }
+
+        private void twoVerticalRedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                bool isAutomatic = false;
+                colormode = "StretchR";
+                thresholdmode = "Two";
+                trackBar2.Maximum = 255;
+                label14.Text = "255";
+                trackBar2.Minimum = 0;
+                label12.Text = "0";
+                trackBar2.Value = 30;
+                trackBar3.Value = 210;
+                int T = trackBar2.Value;
+                int T2 = trackBar3.Value;
+                radioButton1.Checked = true; //RGB
+                radioButton4.Checked = true; //Red
+                imgData.histogramSegmentation(isAutomatic, T, T2, colormode, thresholdmode); //segmentējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchR"); //pārzīmējam rezultātu
+                //tagad es gribu redzēt, kur man uz histogrammas atrodas vertikālais slieksnis, izvadām vērtību label laukā - intensitātei
+                label10.Text = "Threshold 1: " + Convert.ToString(trackBar2.Value);
+                label11.Text = "Threshold 2: " + Convert.ToString(trackBar3.Value);
+                groupBox5.Visible = true;
+                trackBar2.Visible = true; // threshold 1 trackbar
+                trackBar3.Visible = true; // threshold 2 trackbar
+                label11.Visible = true; // threshold 2 value
+                label12.Visible = true; // trackbar 1 0
+                label13.Visible = true; // trackbar 2 0
+                label14.Visible = true; // trackbar 1 255
+                label15.Visible = true; // trackbar 2 255
+            }
+        }
+
+        private void twoVerticalGreenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                bool isAutomatic = false;
+                colormode = "StretchG";
+                thresholdmode = "Two";
+                trackBar2.Maximum = 255;
+                label14.Text = "255";
+                trackBar2.Minimum = 0;
+                label12.Text = "0";
+                trackBar2.Value = 30;
+                trackBar3.Value = 210;
+                int T = trackBar2.Value;
+                int T2 = trackBar3.Value;
+                radioButton1.Checked = true; //RGB
+                radioButton5.Checked = true; //Green
+                imgData.histogramSegmentation(isAutomatic, T, T2, colormode, thresholdmode); //segmentējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchG"); //pārzīmējam rezultātu
+                //tagad es gribu redzēt, kur man uz histogrammas atrodas vertikālais slieksnis, izvadām vērtību label laukā - intensitātei
+                label10.Text = "Threshold 1: " + Convert.ToString(trackBar2.Value);
+                label11.Text = "Threshold 2: " + Convert.ToString(trackBar3.Value);
+                groupBox5.Visible = true;
+                trackBar2.Visible = true; // threshold 1 trackbar
+                trackBar3.Visible = true; // threshold 2 trackbar
+                label11.Visible = true; // threshold 2 value
+                label12.Visible = true; // trackbar 1 0
+                label13.Visible = true; // trackbar 2 0
+                label14.Visible = true; // trackbar 1 255
+                label15.Visible = true; // trackbar 2 255
+            }
+        }
+
+        private void twoVerticalBlueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                bool isAutomatic = false;
+                colormode = "StretchB";
+                thresholdmode = "Two";
+                trackBar2.Maximum = 255;
+                label14.Text = "255";
+                trackBar2.Minimum = 0;
+                label12.Text = "0";
+                trackBar2.Value = 30;
+                trackBar3.Value = 210;
+                int T = trackBar2.Value;
+                int T2 = trackBar3.Value;
+                radioButton1.Checked = true; //RGB
+                radioButton6.Checked = true; //Blue
+                imgData.histogramSegmentation(isAutomatic, T, T2, colormode, thresholdmode); //segmentējam attēlu
+                pictureBox2.Image = imgData.drawImage("StretchB"); //pārzīmējam rezultātu
+                //tagad es gribu redzēt, kur man uz histogrammas atrodas vertikālais slieksnis, izvadām vērtību label laukā - intensitātei
+                label10.Text = "Threshold 1: " + Convert.ToString(trackBar2.Value);
+                label11.Text = "Threshold 2: " + Convert.ToString(trackBar3.Value);
+                groupBox5.Visible = true;
+                trackBar2.Visible = true; // threshold 1 trackbar
+                trackBar3.Visible = true; // threshold 2 trackbar
+                label11.Visible = true; // threshold 2 value
+                label12.Visible = true; // trackbar 1 0
+                label13.Visible = true; // trackbar 2 0
+                label14.Visible = true; // trackbar 1 255
+                label15.Visible = true; // trackbar 2 255
+            }
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            if (imgData.img != null)
+            {
+                toolTip1.SetToolTip(trackBar2, trackBar2.Value.ToString());
+                if (thresholdmode == "Vertical")
+                {
+                    trackBar2.Maximum = 255;
+                    trackBar2.Minimum = 0;
+                    label12.Text = "0";
+                    label14.Text = "255";
+                    imgData.histogramSegmentation(false, trackBar2.Value, 0, colormode, thresholdmode);
+                    pictureBox2.Image = imgData.drawImage(colormode);
+                    label10.Text = "Threshold: " + Convert.ToString(trackBar2.Value);
+                }
+                else if(thresholdmode == "Horizontal")
+                {
+                    imgData.histogramSegmentation(false, trackBar2.Value, 0, colormode, thresholdmode);
+                    pictureBox2.Image = imgData.drawImage(colormode);
+                    label10.Text = "Threshold: " + Convert.ToString(trackBar2.Value);
+                }
+                else if (thresholdmode == "Two")
+                {
+                    trackBar2.Maximum = 255;
+                    trackBar2.Minimum = 0;
+                    if (trackBar2.Value > trackBar3.Value) trackBar2.Value = trackBar3.Value;
+                    else if (trackBar3.Value < trackBar2.Value) trackBar3.Value = trackBar2.Value;
+                    imgData.histogramSegmentation(false, trackBar2.Value, trackBar3.Value, colormode, thresholdmode);
+                    pictureBox2.Image = imgData.drawImage(colormode);
+                    label10.Text = "Threshold 1: " + Convert.ToString(trackBar2.Value);
+                    label11.Text = "Threshold 2: " + Convert.ToString(trackBar3.Value);
+                }
+            }
+        }
+
+        private void trackBar3_Scroll(object sender, EventArgs e)
+        {
+            if(imgData.img != null)
+            {
+                toolTip1.SetToolTip(trackBar3, trackBar3.Value.ToString());
+                if (trackBar2.Value > trackBar3.Value) trackBar2.Value = trackBar3.Value;
+                else if (trackBar3.Value < trackBar2.Value) trackBar3.Value = trackBar2.Value;
+                imgData.histogramSegmentation(false, trackBar2.Value, trackBar3.Value, colormode, thresholdmode);
+                pictureBox2.Image = imgData.drawImage(colormode);
+                label10.Text = "Threshold 1: " + Convert.ToString(trackBar2.Value);
+                label11.Text = "Threshold 2: " + Convert.ToString(trackBar3.Value);
             }
         }
     }

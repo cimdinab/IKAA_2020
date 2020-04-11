@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea17 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend17 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea18 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend18 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea25 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend25 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series25 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea26 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend26 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series26 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -102,12 +102,41 @@
             this.robertsGreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.robertsBlueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.robertsIntensityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalAdaptiveThresholdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adaptiveVerticalRedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adaptiveVerticalGreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adaptiveVerticalBlueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adaptiveVerticalIntensityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalManualThresholdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalManualRedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalManualGreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalManualBlueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalManualIntensityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.horizontalManualThresholdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.horizontalRedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.horizontalGreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.horizontalBlueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.horizontalIntensityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.twoVerticalManualThresholdsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.twoVerticalRedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.twoVerticalGreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.twoVerticalBlueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.twoVerticalIntensityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.trackBar3 = new System.Windows.Forms.TrackBar();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -118,6 +147,9 @@
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -149,7 +181,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(7, 70);
+            this.label1.Location = new System.Drawing.Point(7, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 40);
             this.label1.TabIndex = 3;
@@ -167,7 +199,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(7, 129);
+            this.label2.Location = new System.Drawing.Point(7, 117);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(126, 40);
             this.label2.TabIndex = 4;
@@ -177,7 +209,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(7, 188);
+            this.label3.Location = new System.Drawing.Point(7, 170);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 40);
             this.label3.TabIndex = 7;
@@ -194,7 +226,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(215, 153);
+            this.groupBox1.Size = new System.Drawing.Size(215, 136);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Color Systems";
@@ -202,7 +234,7 @@
             // radioButton9
             // 
             this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(7, 119);
+            this.radioButton9.Location = new System.Drawing.Point(7, 107);
             this.radioButton9.Name = "radioButton9";
             this.radioButton9.Size = new System.Drawing.Size(63, 24);
             this.radioButton9.TabIndex = 3;
@@ -214,7 +246,7 @@
             // radioButton8
             // 
             this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(7, 88);
+            this.radioButton8.Location = new System.Drawing.Point(7, 79);
             this.radioButton8.Name = "radioButton8";
             this.radioButton8.Size = new System.Drawing.Size(77, 24);
             this.radioButton8.TabIndex = 2;
@@ -226,7 +258,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(7, 57);
+            this.radioButton2.Location = new System.Drawing.Point(7, 51);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(65, 24);
@@ -239,7 +271,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(7, 26);
+            this.radioButton1.Location = new System.Drawing.Point(7, 23);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(67, 24);
@@ -257,11 +289,11 @@
             this.groupBox2.Controls.Add(this.radioButton4);
             this.groupBox2.Controls.Add(this.radioButton3);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.groupBox2.Location = new System.Drawing.Point(924, 194);
+            this.groupBox2.Location = new System.Drawing.Point(924, 185);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(215, 199);
+            this.groupBox2.Size = new System.Drawing.Size(215, 173);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Color Channels";
@@ -269,7 +301,7 @@
             // radioButton7
             // 
             this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(5, 162);
+            this.radioButton7.Location = new System.Drawing.Point(7, 143);
             this.radioButton7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton7.Name = "radioButton7";
             this.radioButton7.Size = new System.Drawing.Size(92, 24);
@@ -281,7 +313,7 @@
             // radioButton6
             // 
             this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(5, 129);
+            this.radioButton6.Location = new System.Drawing.Point(7, 113);
             this.radioButton6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(64, 24);
@@ -293,7 +325,7 @@
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(5, 96);
+            this.radioButton5.Location = new System.Drawing.Point(7, 83);
             this.radioButton5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(76, 24);
@@ -305,7 +337,7 @@
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(5, 63);
+            this.radioButton4.Location = new System.Drawing.Point(7, 53);
             this.radioButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(60, 24);
@@ -318,7 +350,7 @@
             // 
             this.radioButton3.AutoSize = true;
             this.radioButton3.Checked = true;
-            this.radioButton3.Location = new System.Drawing.Point(7, 30);
+            this.radioButton3.Location = new System.Drawing.Point(7, 23);
             this.radioButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(110, 24);
@@ -332,7 +364,7 @@
             // 
             this.invertButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.invertButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.invertButton.Location = new System.Drawing.Point(1358, 399);
+            this.invertButton.Location = new System.Drawing.Point(1358, 365);
             this.invertButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.invertButton.Name = "invertButton";
             this.invertButton.Size = new System.Drawing.Size(132, 37);
@@ -352,7 +384,7 @@
             this.colorButton.FlatAppearance.BorderColor = System.Drawing.Color.LightCyan;
             this.colorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colorButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.colorButton.Location = new System.Drawing.Point(1358, 442);
+            this.colorButton.Location = new System.Drawing.Point(1358, 411);
             this.colorButton.Margin = new System.Windows.Forms.Padding(4);
             this.colorButton.Name = "colorButton";
             this.colorButton.Size = new System.Drawing.Size(132, 37);
@@ -374,7 +406,7 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(343, 361);
+            this.groupBox3.Size = new System.Drawing.Size(343, 326);
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Image Data";
@@ -382,7 +414,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 306);
+            this.label6.Location = new System.Drawing.Point(7, 276);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 40);
             this.label6.TabIndex = 16;
@@ -403,7 +435,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(7, 247);
+            this.label4.Location = new System.Drawing.Point(7, 223);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 40);
@@ -412,32 +444,32 @@
             // 
             // chart1
             // 
-            chartArea17.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea17);
-            legend17.Name = "Legend1";
-            this.chart1.Legends.Add(legend17);
+            chartArea25.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea25);
+            legend25.Name = "Legend1";
+            this.chart1.Legends.Add(legend25);
             this.chart1.Location = new System.Drawing.Point(12, 487);
             this.chart1.Name = "chart1";
-            series17.ChartArea = "ChartArea1";
-            series17.Legend = "Legend1";
-            series17.Name = "Series1";
-            this.chart1.Series.Add(series17);
+            series25.ChartArea = "ChartArea1";
+            series25.Legend = "Legend1";
+            series25.Name = "Series1";
+            this.chart1.Series.Add(series25);
             this.chart1.Size = new System.Drawing.Size(450, 166);
             this.chart1.TabIndex = 15;
             this.chart1.Text = "chart1";
             // 
             // chart2
             // 
-            chartArea18.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea18);
-            legend18.Name = "Legend1";
-            this.chart2.Legends.Add(legend18);
+            chartArea26.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea26);
+            legend26.Name = "Legend1";
+            this.chart2.Legends.Add(legend26);
             this.chart2.Location = new System.Drawing.Point(468, 487);
             this.chart2.Name = "chart2";
-            series18.ChartArea = "ChartArea1";
-            series18.Legend = "Legend1";
-            series18.Name = "Series1";
-            this.chart2.Series.Add(series18);
+            series26.ChartArea = "ChartArea1";
+            series26.Legend = "Legend1";
+            series26.Name = "Series1";
+            this.chart2.Series.Add(series26);
             this.chart2.Size = new System.Drawing.Size(450, 166);
             this.chart2.TabIndex = 16;
             this.chart2.Text = "chart2";
@@ -608,7 +640,11 @@
             // segmentationToolStripMenuItem
             // 
             this.segmentationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.edgeDetectionToolStripMenuItem});
+            this.edgeDetectionToolStripMenuItem,
+            this.verticalAdaptiveThresholdToolStripMenuItem,
+            this.verticalManualThresholdToolStripMenuItem,
+            this.horizontalManualThresholdToolStripMenuItem,
+            this.twoVerticalManualThresholdsToolStripMenuItem});
             this.segmentationToolStripMenuItem.Name = "segmentationToolStripMenuItem";
             this.segmentationToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
             this.segmentationToolStripMenuItem.Text = "Segmentation";
@@ -620,7 +656,7 @@
             this.prewittOperator3x3ToolStripMenuItem,
             this.robertsOperatorToolStripMenuItem});
             this.edgeDetectionToolStripMenuItem.Name = "edgeDetectionToolStripMenuItem";
-            this.edgeDetectionToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.edgeDetectionToolStripMenuItem.Size = new System.Drawing.Size(300, 26);
             this.edgeDetectionToolStripMenuItem.Text = "Edge Detection";
             // 
             // sobelOperator3x3ToolStripMenuItem
@@ -685,35 +721,35 @@
             // prewittRGBToolStripMenuItem
             // 
             this.prewittRGBToolStripMenuItem.Name = "prewittRGBToolStripMenuItem";
-            this.prewittRGBToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.prewittRGBToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.prewittRGBToolStripMenuItem.Text = "RGB";
             this.prewittRGBToolStripMenuItem.Click += new System.EventHandler(this.prewittRGBToolStripMenuItem_Click);
             // 
             // prewittRedToolStripMenuItem
             // 
             this.prewittRedToolStripMenuItem.Name = "prewittRedToolStripMenuItem";
-            this.prewittRedToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.prewittRedToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.prewittRedToolStripMenuItem.Text = "Red";
             this.prewittRedToolStripMenuItem.Click += new System.EventHandler(this.prewittRedToolStripMenuItem_Click);
             // 
             // prewittGreenToolStripMenuItem
             // 
             this.prewittGreenToolStripMenuItem.Name = "prewittGreenToolStripMenuItem";
-            this.prewittGreenToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.prewittGreenToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.prewittGreenToolStripMenuItem.Text = "Green";
             this.prewittGreenToolStripMenuItem.Click += new System.EventHandler(this.prewittGreenToolStripMenuItem_Click);
             // 
             // prewittBlueToolStripMenuItem
             // 
             this.prewittBlueToolStripMenuItem.Name = "prewittBlueToolStripMenuItem";
-            this.prewittBlueToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.prewittBlueToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.prewittBlueToolStripMenuItem.Text = "Blue";
             this.prewittBlueToolStripMenuItem.Click += new System.EventHandler(this.prewittBlueToolStripMenuItem_Click);
             // 
             // prewittIntensityToolStripMenuItem
             // 
             this.prewittIntensityToolStripMenuItem.Name = "prewittIntensityToolStripMenuItem";
-            this.prewittIntensityToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.prewittIntensityToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.prewittIntensityToolStripMenuItem.Text = "Intensity";
             this.prewittIntensityToolStripMenuItem.Click += new System.EventHandler(this.prewittIntensityToolStripMenuItem_Click);
             // 
@@ -732,41 +768,197 @@
             // robertsRGBToolStripMenuItem
             // 
             this.robertsRGBToolStripMenuItem.Name = "robertsRGBToolStripMenuItem";
-            this.robertsRGBToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.robertsRGBToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.robertsRGBToolStripMenuItem.Text = "RGB";
             this.robertsRGBToolStripMenuItem.Click += new System.EventHandler(this.robertsRGBToolStripMenuItem_Click);
             // 
             // robertsRedToolStripMenuItem
             // 
             this.robertsRedToolStripMenuItem.Name = "robertsRedToolStripMenuItem";
-            this.robertsRedToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.robertsRedToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.robertsRedToolStripMenuItem.Text = "Red";
             this.robertsRedToolStripMenuItem.Click += new System.EventHandler(this.robertsRedToolStripMenuItem_Click);
             // 
             // robertsGreenToolStripMenuItem
             // 
             this.robertsGreenToolStripMenuItem.Name = "robertsGreenToolStripMenuItem";
-            this.robertsGreenToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.robertsGreenToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.robertsGreenToolStripMenuItem.Text = "Green";
             this.robertsGreenToolStripMenuItem.Click += new System.EventHandler(this.robertsGreenToolStripMenuItem_Click);
             // 
             // robertsBlueToolStripMenuItem
             // 
             this.robertsBlueToolStripMenuItem.Name = "robertsBlueToolStripMenuItem";
-            this.robertsBlueToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.robertsBlueToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.robertsBlueToolStripMenuItem.Text = "Blue";
             this.robertsBlueToolStripMenuItem.Click += new System.EventHandler(this.robertsBlueToolStripMenuItem_Click);
             // 
             // robertsIntensityToolStripMenuItem
             // 
             this.robertsIntensityToolStripMenuItem.Name = "robertsIntensityToolStripMenuItem";
-            this.robertsIntensityToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.robertsIntensityToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.robertsIntensityToolStripMenuItem.Text = "Intensity";
             this.robertsIntensityToolStripMenuItem.Click += new System.EventHandler(this.robertsIntensityToolStripMenuItem_Click);
             // 
+            // verticalAdaptiveThresholdToolStripMenuItem
+            // 
+            this.verticalAdaptiveThresholdToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.adaptiveVerticalRedToolStripMenuItem,
+            this.adaptiveVerticalGreenToolStripMenuItem,
+            this.adaptiveVerticalBlueToolStripMenuItem,
+            this.adaptiveVerticalIntensityToolStripMenuItem});
+            this.verticalAdaptiveThresholdToolStripMenuItem.Name = "verticalAdaptiveThresholdToolStripMenuItem";
+            this.verticalAdaptiveThresholdToolStripMenuItem.Size = new System.Drawing.Size(300, 26);
+            this.verticalAdaptiveThresholdToolStripMenuItem.Text = "Vertical Adaptive Threshold";
+            // 
+            // adaptiveVerticalRedToolStripMenuItem
+            // 
+            this.adaptiveVerticalRedToolStripMenuItem.Name = "adaptiveVerticalRedToolStripMenuItem";
+            this.adaptiveVerticalRedToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.adaptiveVerticalRedToolStripMenuItem.Text = "Red";
+            this.adaptiveVerticalRedToolStripMenuItem.Click += new System.EventHandler(this.adaptiveVerticalRedToolStripMenuItem_Click);
+            // 
+            // adaptiveVerticalGreenToolStripMenuItem
+            // 
+            this.adaptiveVerticalGreenToolStripMenuItem.Name = "adaptiveVerticalGreenToolStripMenuItem";
+            this.adaptiveVerticalGreenToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.adaptiveVerticalGreenToolStripMenuItem.Text = "Green";
+            this.adaptiveVerticalGreenToolStripMenuItem.Click += new System.EventHandler(this.adaptiveVerticalGreenToolStripMenuItem_Click);
+            // 
+            // adaptiveVerticalBlueToolStripMenuItem
+            // 
+            this.adaptiveVerticalBlueToolStripMenuItem.Name = "adaptiveVerticalBlueToolStripMenuItem";
+            this.adaptiveVerticalBlueToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.adaptiveVerticalBlueToolStripMenuItem.Text = "Blue";
+            this.adaptiveVerticalBlueToolStripMenuItem.Click += new System.EventHandler(this.adaptiveVerticalBlueToolStripMenuItem_Click);
+            // 
+            // adaptiveVerticalIntensityToolStripMenuItem
+            // 
+            this.adaptiveVerticalIntensityToolStripMenuItem.Name = "adaptiveVerticalIntensityToolStripMenuItem";
+            this.adaptiveVerticalIntensityToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.adaptiveVerticalIntensityToolStripMenuItem.Text = "Intensity";
+            this.adaptiveVerticalIntensityToolStripMenuItem.Click += new System.EventHandler(this.adaptiveVerticalIntensityToolStripMenuItem_Click);
+            // 
+            // verticalManualThresholdToolStripMenuItem
+            // 
+            this.verticalManualThresholdToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verticalManualRedToolStripMenuItem,
+            this.verticalManualGreenToolStripMenuItem,
+            this.verticalManualBlueToolStripMenuItem,
+            this.verticalManualIntensityToolStripMenuItem});
+            this.verticalManualThresholdToolStripMenuItem.Name = "verticalManualThresholdToolStripMenuItem";
+            this.verticalManualThresholdToolStripMenuItem.Size = new System.Drawing.Size(300, 26);
+            this.verticalManualThresholdToolStripMenuItem.Text = "Vertical Manual Threshold";
+            // 
+            // verticalManualRedToolStripMenuItem
+            // 
+            this.verticalManualRedToolStripMenuItem.Name = "verticalManualRedToolStripMenuItem";
+            this.verticalManualRedToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.verticalManualRedToolStripMenuItem.Text = "Red";
+            this.verticalManualRedToolStripMenuItem.Click += new System.EventHandler(this.verticalManualRedToolStripMenuItem_Click);
+            // 
+            // verticalManualGreenToolStripMenuItem
+            // 
+            this.verticalManualGreenToolStripMenuItem.Name = "verticalManualGreenToolStripMenuItem";
+            this.verticalManualGreenToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.verticalManualGreenToolStripMenuItem.Text = "Green";
+            this.verticalManualGreenToolStripMenuItem.Click += new System.EventHandler(this.verticalManualGreenToolStripMenuItem_Click);
+            // 
+            // verticalManualBlueToolStripMenuItem
+            // 
+            this.verticalManualBlueToolStripMenuItem.Name = "verticalManualBlueToolStripMenuItem";
+            this.verticalManualBlueToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.verticalManualBlueToolStripMenuItem.Text = "Blue";
+            this.verticalManualBlueToolStripMenuItem.Click += new System.EventHandler(this.verticalManualBlueToolStripMenuItem_Click);
+            // 
+            // verticalManualIntensityToolStripMenuItem
+            // 
+            this.verticalManualIntensityToolStripMenuItem.Name = "verticalManualIntensityToolStripMenuItem";
+            this.verticalManualIntensityToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.verticalManualIntensityToolStripMenuItem.Text = "Intensity";
+            this.verticalManualIntensityToolStripMenuItem.Click += new System.EventHandler(this.verticalManualIntensityToolStripMenuItem_Click);
+            // 
+            // horizontalManualThresholdToolStripMenuItem
+            // 
+            this.horizontalManualThresholdToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.horizontalRedToolStripMenuItem,
+            this.horizontalGreenToolStripMenuItem,
+            this.horizontalBlueToolStripMenuItem,
+            this.horizontalIntensityToolStripMenuItem});
+            this.horizontalManualThresholdToolStripMenuItem.Name = "horizontalManualThresholdToolStripMenuItem";
+            this.horizontalManualThresholdToolStripMenuItem.Size = new System.Drawing.Size(300, 26);
+            this.horizontalManualThresholdToolStripMenuItem.Text = "Horizontal Manual Threshold";
+            // 
+            // horizontalRedToolStripMenuItem
+            // 
+            this.horizontalRedToolStripMenuItem.Name = "horizontalRedToolStripMenuItem";
+            this.horizontalRedToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.horizontalRedToolStripMenuItem.Text = "Red";
+            this.horizontalRedToolStripMenuItem.Click += new System.EventHandler(this.horizontalRedToolStripMenuItem_Click);
+            // 
+            // horizontalGreenToolStripMenuItem
+            // 
+            this.horizontalGreenToolStripMenuItem.Name = "horizontalGreenToolStripMenuItem";
+            this.horizontalGreenToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.horizontalGreenToolStripMenuItem.Text = "Green";
+            this.horizontalGreenToolStripMenuItem.Click += new System.EventHandler(this.horizontalGreenToolStripMenuItem_Click);
+            // 
+            // horizontalBlueToolStripMenuItem
+            // 
+            this.horizontalBlueToolStripMenuItem.Name = "horizontalBlueToolStripMenuItem";
+            this.horizontalBlueToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.horizontalBlueToolStripMenuItem.Text = "Blue";
+            this.horizontalBlueToolStripMenuItem.Click += new System.EventHandler(this.horizontalBlueToolStripMenuItem_Click);
+            // 
+            // horizontalIntensityToolStripMenuItem
+            // 
+            this.horizontalIntensityToolStripMenuItem.Name = "horizontalIntensityToolStripMenuItem";
+            this.horizontalIntensityToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.horizontalIntensityToolStripMenuItem.Text = "Intensity";
+            this.horizontalIntensityToolStripMenuItem.Click += new System.EventHandler(this.horizontalIntensityToolStripMenuItem_Click);
+            // 
+            // twoVerticalManualThresholdsToolStripMenuItem
+            // 
+            this.twoVerticalManualThresholdsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.twoVerticalRedToolStripMenuItem,
+            this.twoVerticalGreenToolStripMenuItem,
+            this.twoVerticalBlueToolStripMenuItem,
+            this.twoVerticalIntensityToolStripMenuItem});
+            this.twoVerticalManualThresholdsToolStripMenuItem.Name = "twoVerticalManualThresholdsToolStripMenuItem";
+            this.twoVerticalManualThresholdsToolStripMenuItem.Size = new System.Drawing.Size(300, 26);
+            this.twoVerticalManualThresholdsToolStripMenuItem.Text = "Two Vertical Manual Thresholds";
+            // 
+            // twoVerticalRedToolStripMenuItem
+            // 
+            this.twoVerticalRedToolStripMenuItem.Name = "twoVerticalRedToolStripMenuItem";
+            this.twoVerticalRedToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.twoVerticalRedToolStripMenuItem.Text = "Red";
+            this.twoVerticalRedToolStripMenuItem.Click += new System.EventHandler(this.twoVerticalRedToolStripMenuItem_Click);
+            // 
+            // twoVerticalGreenToolStripMenuItem
+            // 
+            this.twoVerticalGreenToolStripMenuItem.Name = "twoVerticalGreenToolStripMenuItem";
+            this.twoVerticalGreenToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.twoVerticalGreenToolStripMenuItem.Text = "Green";
+            this.twoVerticalGreenToolStripMenuItem.Click += new System.EventHandler(this.twoVerticalGreenToolStripMenuItem_Click);
+            // 
+            // twoVerticalBlueToolStripMenuItem
+            // 
+            this.twoVerticalBlueToolStripMenuItem.Name = "twoVerticalBlueToolStripMenuItem";
+            this.twoVerticalBlueToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.twoVerticalBlueToolStripMenuItem.Text = "Blue";
+            this.twoVerticalBlueToolStripMenuItem.Click += new System.EventHandler(this.twoVerticalBlueToolStripMenuItem_Click);
+            // 
+            // twoVerticalIntensityToolStripMenuItem
+            // 
+            this.twoVerticalIntensityToolStripMenuItem.Name = "twoVerticalIntensityToolStripMenuItem";
+            this.twoVerticalIntensityToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.twoVerticalIntensityToolStripMenuItem.Text = "Intensity";
+            this.twoVerticalIntensityToolStripMenuItem.Click += new System.EventHandler(this.twoVerticalIntensityToolStripMenuItem_Click);
+            // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(6, 35);
+            this.trackBar1.Location = new System.Drawing.Point(6, 27);
             this.trackBar1.Maximum = 100;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(331, 56);
@@ -781,9 +973,9 @@
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.trackBar1);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(931, 551);
+            this.groupBox4.Location = new System.Drawing.Point(924, 365);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(343, 102);
+            this.groupBox4.Size = new System.Drawing.Size(343, 92);
             this.groupBox4.TabIndex = 20;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Histogram - Normalize Values";
@@ -818,11 +1010,112 @@
             this.label7.TabIndex = 21;
             this.label7.Text = "0%";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(9, 24);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(135, 17);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Vertical Threshold 1";
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(3, 44);
+            this.trackBar2.Maximum = 255;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(326, 56);
+            this.trackBar2.TabIndex = 22;
+            this.trackBar2.TickFrequency = 10;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            // 
+            // trackBar3
+            // 
+            this.trackBar3.Location = new System.Drawing.Point(3, 123);
+            this.trackBar3.Maximum = 255;
+            this.trackBar3.Name = "trackBar3";
+            this.trackBar3.Size = new System.Drawing.Size(326, 56);
+            this.trackBar3.TabIndex = 23;
+            this.trackBar3.TickFrequency = 10;
+            this.trackBar3.Value = 255;
+            this.trackBar3.Scroll += new System.EventHandler(this.trackBar3_Scroll);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label15);
+            this.groupBox5.Controls.Add(this.label14);
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.label12);
+            this.groupBox5.Controls.Add(this.label11);
+            this.groupBox5.Controls.Add(this.label10);
+            this.groupBox5.Controls.Add(this.trackBar3);
+            this.groupBox5.Controls.Add(this.trackBar2);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(928, 463);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(338, 190);
+            this.groupBox5.TabIndex = 24;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Segmentation";
+            this.groupBox5.Visible = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(299, 155);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(28, 15);
+            this.label15.TabIndex = 28;
+            this.label15.Text = "255";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(299, 76);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(28, 15);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "255";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(14, 155);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(14, 15);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(14, 76);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(14, 15);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "0";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(9, 103);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(135, 17);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "Vertical Threshold 2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1502, 665);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.chart1);
@@ -853,6 +1146,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -933,6 +1230,35 @@
         private System.Windows.Forms.ToolStripMenuItem robertsGreenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem robertsBlueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem robertsIntensityToolStripMenuItem;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ToolStripMenuItem verticalAdaptiveThresholdToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adaptiveVerticalRedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adaptiveVerticalGreenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adaptiveVerticalBlueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adaptiveVerticalIntensityToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verticalManualThresholdToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verticalManualRedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verticalManualGreenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verticalManualBlueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verticalManualIntensityToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem horizontalManualThresholdToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem horizontalRedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem horizontalGreenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem horizontalBlueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem horizontalIntensityToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem twoVerticalManualThresholdsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem twoVerticalRedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem twoVerticalGreenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem twoVerticalBlueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem twoVerticalIntensityToolStripMenuItem;
+        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.TrackBar trackBar3;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
     }
 }
 
