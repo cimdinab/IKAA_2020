@@ -989,8 +989,8 @@ namespace IKAA_171rdb115_2
                 bool isAutomatic = false;
                 colormode = "StretchI";
                 thresholdmode = "Horizontal";
-                trackBar2.Maximum = imgData.hist2.hI[256];
-                label14.Text = Convert.ToString(imgData.hist2.hI[256]);
+                trackBar2.Maximum = imgData.hist1.hI[256];
+                label14.Text = Convert.ToString(imgData.hist1.hI[256]);
                 trackBar2.Minimum = 0;
                 label12.Text = "0";
                 int T = trackBar2.Value;
@@ -1017,8 +1017,8 @@ namespace IKAA_171rdb115_2
                 bool isAutomatic = false;
                 colormode = "StretchR";
                 thresholdmode = "Horizontal";
-                trackBar2.Maximum = imgData.hist2.hR[256];
-                label14.Text = Convert.ToString(imgData.hist2.hR[256]);
+                trackBar2.Maximum = imgData.hist1.hR[256];
+                label14.Text = Convert.ToString(imgData.hist1.hR[256]);
                 trackBar2.Minimum = 0;
                 label12.Text = "0";
                 int T = trackBar2.Value;
@@ -1045,8 +1045,8 @@ namespace IKAA_171rdb115_2
                 bool isAutomatic = false;
                 colormode = "StretchG";
                 thresholdmode = "Horizontal";
-                trackBar2.Maximum = imgData.hist2.hG[256];
-                label14.Text = Convert.ToString(imgData.hist2.hG[256]);
+                trackBar2.Maximum = imgData.hist1.hG[256];
+                label14.Text = Convert.ToString(imgData.hist1.hG[256]);
                 trackBar2.Minimum = 0;
                 label12.Text = "0";
                 int T = trackBar2.Value;
@@ -1074,8 +1074,8 @@ namespace IKAA_171rdb115_2
                 bool isAutomatic = false;
                 colormode = "StretchB";
                 thresholdmode = "Horizontal";
-                trackBar2.Maximum = imgData.hist2.hB[256];
-                label14.Text = Convert.ToString(imgData.hist2.hB[256]);
+                trackBar2.Maximum = imgData.hist1.hB[256];
+                label14.Text = Convert.ToString(imgData.hist1.hB[256]);
                 trackBar2.Minimum = 0;
                 label12.Text = "0";
                 int T = trackBar2.Value;
@@ -1232,6 +1232,7 @@ namespace IKAA_171rdb115_2
         {
             if (imgData.img != null)
             {
+                radioButton1.Checked = true;
                 toolTip1.SetToolTip(trackBar2, trackBar2.Value.ToString());
                 if (thresholdmode == "Vertical")
                 {

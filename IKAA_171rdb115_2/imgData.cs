@@ -149,9 +149,7 @@ namespace IKAA_171rdb115_2
                                             }
                                         case "Horizontal":
                                             {
-                                                //ja intensitāte mazāka par slieksni - objekts
-                                                if (hist2.hI[img[x, y].I] < T) { imgnew[x, y].I = 0; }
-                                                //fons
+                                                if (hist1.hI[img[x, y].I] < T) { imgnew[x, y].I = 0; }
                                                 else { imgnew[x, y].I = 255; }
                                                 break;
                                             }
@@ -179,9 +177,7 @@ namespace IKAA_171rdb115_2
                                             }
                                         case "Horizontal":
                                             {
-                                                //ja intensitāte mazāka par slieksni - objekts
-                                                if (hist2.hR[img[x, y].R] < T) { imgnew[x, y].R = 0; }
-                                                //fons
+                                                if (hist1.hR[img[x, y].R] < T) { imgnew[x, y].R = 0; }
                                                 else { imgnew[x, y].R = 255; }
                                                 break;
                                             }
@@ -209,9 +205,7 @@ namespace IKAA_171rdb115_2
                                             }
                                         case "Horizontal":
                                             {
-                                                //ja intensitāte mazāka par slieksni - objekts
-                                                if (hist2.hG[img[x, y].G] < T) { imgnew[x, y].G = 0; }
-                                                //fons
+                                                if (hist1.hG[img[x, y].G] < T) { imgnew[x, y].G = 0; }
                                                 else { imgnew[x, y].G = 255; }
                                                 break;
                                             }
@@ -239,9 +233,7 @@ namespace IKAA_171rdb115_2
                                             }
                                         case "Horizontal":
                                             {
-                                                //ja intensitāte mazāka par slieksni - objekts
-                                                if (hist2.hB[img[x, y].B] < T) { imgnew[x, y].B = 0; }
-                                                //fons
+                                                if (hist1.hB[img[x, y].B] < T) { imgnew[x, y].B = 0; }
                                                 else { imgnew[x, y].B = 255; }
                                                 break;
                                             }
