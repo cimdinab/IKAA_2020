@@ -488,6 +488,13 @@ namespace IKAA_171rdb115_2
                                     imgnew[x, y].I = Convert.ToByte(0.0722f * imgnew[x, y].B + 0.7152f * imgnew[x, y].G + 0.2126f * imgnew[x, y].R);
                                     break;
                                 } //grayscale
+                            case "Transition":
+                                {
+                                    line[3 * x + 2] = img[x, y].R;
+                                    line[3 * x + 1] = img[x, y].G;
+                                    line[3 * x] = img[x, y].B;
+                                    break;
+                                }
                             case "StretchRGB":
                                 {
                                     line[3 * x] = imgnew[x, y].B; //blue
@@ -649,7 +656,7 @@ namespace IKAA_171rdb115_2
                     Marshal.Copy(line, 0, ptr, line.Length);
                 }
                 bmp.UnlockBits(bmpData);
-                hist2.readHistogramHSV(imgnew, imghsv);
+                //hist2.readHistogramHSV(imgnew, imghsv);
                 watchdraw.Stop();
                 var elapsedMs = watchdraw.ElapsedMilliseconds;
                 Console.WriteLine("Image draw time " + elapsedMs);

@@ -78,11 +78,169 @@ namespace IKAA_171rdb115_2
             if (value > 255)
             {
                 value = 255;
-            }else if (value < 0)
+            }
+            else if (value < 0)
             {
                 value = 0;
             }
             return value;
+        }
+
+        public void effectOpacity(PixelClassRGB a, PixelClassRGB b, double d)
+        {
+            R = Convert.ToByte(d * a.R + (1 - d) * b.R);
+            G = Convert.ToByte(d * a.G + (1 - d) * b.G);
+            B = Convert.ToByte(d * a.B + (1 - d) * b.B);
+        }
+
+        public void effectScreen(PixelClassRGB a, PixelClassRGB b)
+        {
+            double first = (double)a.R / 255;
+            double second = (double)b.R / 255;
+            R = Convert.ToByte((1 - (1 - first) * (1 - second)) * 255);
+
+            first = (double)a.G / 255;
+            second = (double)b.G / 255;
+            G = Convert.ToByte((1 - (1 - first) * (1 - second)) * 255);
+
+            first = (double)a.B / 255;
+            second = (double)b.B / 255;
+            B = Convert.ToByte((1 - (1 - first) * (1 - second)) * 255);
+        }
+
+        public void effectDarken(PixelClassRGB a, PixelClassRGB b)
+        {
+            if (b.R <= a.R) R = b.R;
+            else R = a.R;
+            if (b.G <= a.G) G = b.G;
+            else G = a.G;
+            if (b.B <= a.B) B = b.B;
+            else B = a.B;
+        }
+
+        public void effectLighten(PixelClassRGB a, PixelClassRGB b)
+        {
+            if (b.R <= a.R) R = a.R;
+            else R = b.R;
+            if (b.G <= a.G) G = a.G;
+            else G = b.G;
+            if (b.B <= a.B) B = a.B;
+            else B = b.B;
+        }
+
+        public void effectMultiply(PixelClassRGB a, PixelClassRGB b)
+        {
+            double first = (double)a.R / 255;
+            double second = (double)b.R / 255;
+            R = Convert.ToByte(first * second * 255);
+
+            first = (double)a.G / 255;
+            second = (double)b.G / 255;
+            G = Convert.ToByte(first * second * 255);
+
+            first = (double)a.B / 255;
+            second = (double)b.B / 255;
+            B = Convert.ToByte(first * second * 255);
+        }
+
+        public void effectAddition(PixelClassRGB a, PixelClassRGB b)
+        {
+            if (a.R + b.R > 255) R = 255;
+            else if (a.R + b.R < 0) R = 0;
+            else R = Convert.ToByte(a.R + b.R);
+
+            if (a.G + b.G > 255) G = 255;
+            else if (a.G + b.G < 0) G = 0;
+            else G = Convert.ToByte(a.G + b.G);
+
+            if (a.B + b.B > 255) B = 255;
+            else if (a.B + b.B < 0) B = 0;
+            else B = Convert.ToByte(a.B + b.B);
+        }
+
+        public void effectSubtract(PixelClassRGB a, PixelClassRGB b)
+        {
+            if (a.R + b.R - 255 > 255) R = 255;
+            else if (a.R + b.R - 255 < 0) R = 0;
+            else R = Convert.ToByte(a.R + b.R - 255);
+
+            if (a.G + b.G - 255 > 255) G = 255;
+            else if (a.G + b.G - 255 < 0) G = 0;
+            else G = Convert.ToByte(a.G + b.G - 255);
+
+            if (a.B + b.B - 255 > 255) B = 255;
+            else if (a.B + b.B - 255 < 0) B = 0;
+            else B = Convert.ToByte(a.B + b.B - 255);
+        }
+
+        public void effectOverlay(PixelClassRGB a, PixelClassRGB b)
+        {
+            double first;
+            double second;
+
+            first = (double)a.R / 255;
+            second = (double)b.R / 255;
+            if (second <= 0.5) R = Convert.ToByte((2 * first * second) * 255);
+            else R = Convert.ToByte((1 - 2 * (1 - first) * (1 - second)) * 255);
+
+            first = (double)a.G / 255;
+            second = (double)b.G / 255;
+            if (second <= 0.5) G = Convert.ToByte((2 * first * second) * 255);
+            else G = Convert.ToByte((1 - 2 * (1 - first) * (1 - second)) * 255);
+
+            first = (double)a.B / 255;
+            second = (double)b.B / 255;
+            if (second <= 0.5) B = Convert.ToByte((2 * first * second) * 255);
+            else B = Convert.ToByte((1 - 2 * (1 - first) * (1 - second)) * 255);
+        }
+
+        public void effectHardLight(PixelClassRGB a, PixelClassRGB b)
+        {
+            double first;
+            double second;
+
+            first = (double)a.R / 255;
+            second = (double)b.R / 255;
+            if (first <= 0.5) R = Convert.ToByte((2 * first * second) * 255);
+            else R = Convert.ToByte((1 - 2 * (1 - first) * (1 - second)) * 255);
+
+            first = (double)a.G / 255;
+            second = (double)b.G / 255;
+            if (first <= 0.5) G = Convert.ToByte((2 * first * second) * 255);
+            else G = Convert.ToByte((1 - 2 * (1 - first) * (1 - second)) * 255);
+
+            first = (double)a.B / 255;
+            second = (double)b.B / 255;
+            if (first <= 0.5) B = Convert.ToByte((2 * first * second) * 255);
+            else B = Convert.ToByte((1 - 2 * (1 - first) * (1 - second)) * 255);
+        }
+
+        public void effectSoftLight(PixelClassRGB a, PixelClassRGB b)
+        {
+            double first;
+            double second;
+
+            first = (double)a.R / 255;
+            second = (double)b.R / 255;
+            if (first <= 0.5) R = Convert.ToByte(((2 * first - 1) * (second - Math.Pow(second, 2)) + second) * 255);
+            else R = Convert.ToByte(((2 * first - 1) * (Math.Sqrt(second) - second) + second) * 255);
+
+            first = (double)a.G / 255;
+            second = (double)b.G / 255;
+            if (first <= 0.5) G = Convert.ToByte(((2 * first - 1) * (second - Math.Pow(second, 2)) + second) * 255);
+            else G = Convert.ToByte(((2 * first - 1) * (Math.Sqrt(second) - second) + second) * 255);
+
+            first = (double)a.B / 255;
+            second = (double)b.B / 255;
+            if (first <= 0.5) B = Convert.ToByte(((2 * first - 1) * (second - Math.Pow(second, 2)) + second) * 255);
+            else B = Convert.ToByte(((2 * first - 1) * (Math.Sqrt(second) - second) + second) * 255);
+        }
+
+        public void effectDifference(PixelClassRGB a, PixelClassRGB b)
+        {
+            R = Convert.ToByte(Math.Abs(a.R - b.R));
+            G = Convert.ToByte(Math.Abs(a.G - b.G));
+            B = Convert.ToByte(Math.Abs(a.B - b.B));
         }
     }
 }

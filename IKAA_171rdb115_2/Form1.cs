@@ -22,12 +22,12 @@ namespace IKAA_171rdb115_2
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.Image = Bitmap.FromFile(dialog.FileName);
+                Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
+                imgData.readImage(bmp);
+                pictureBox2.Image = imgData.drawImage("RGB");
+                imgData.hist2.drawHistogram(chart1, "RGB");
+                imgData.hist2.drawHistogram(chart2, "RGB");
             }
-            Bitmap bmp = (Bitmap)pictureBox1.Image.Clone();
-            imgData.readImage(bmp);
-            pictureBox2.Image = imgData.drawImage("RGB");
-            imgData.hist2.drawHistogram(chart1, "RGB");
-            imgData.hist2.drawHistogram(chart2, "RGB");
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
@@ -1276,6 +1276,12 @@ namespace IKAA_171rdb115_2
                 label10.Text = "Threshold 1: " + Convert.ToString(trackBar2.Value);
                 label11.Text = "Threshold 2: " + Convert.ToString(trackBar3.Value);
             }
+        }
+
+        private void transitionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 openForm = new Form2();
+            openForm.Show();
         }
     }
 }
