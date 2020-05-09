@@ -17,6 +17,8 @@ namespace IKAA_171rdb115_2
         public Histogram hist2; //edited image
         public Filter filters;
         public Filter filters2;
+        public int x0;
+        public int y0;
 
         ~imgData()
         {
@@ -70,6 +72,8 @@ namespace IKAA_171rdb115_2
                     imghsvnew[x, y] = new PixelClassHSV(img[x, y].R, img[x, y].G, img[x, y].B);
                     imgcmyk[x, y] = new PixelClassCMYK(img[x, y].R, img[x, y].G, img[x, y].B);
                     imgyuv[x, y] = new PixelClassYUV(img[x, y].R, img[x, y].G, img[x, y].B);
+                    img[x, y].X = x - bmpData.Width / 2;
+                    img[x, y].Y = y - bmpData.Height / 2;
                 }
             }
             bmp.UnlockBits(bmpData); //nolasīšanas rezultāts
@@ -436,6 +440,23 @@ namespace IKAA_171rdb115_2
                     {
                         switch (mode)
                         {
+                            case "Transformation":
+                                {
+                                    if (((img[x, y].X + x0) > 0) && ((img[x, y].Y + y0) > 0) &&
+                                        (((img[x, y].X + x0) < bmpData.Width) && ((img[x, y].Y + y0) < bmpData.Height)))
+                                    {
+                                        line[3 * x + 2] = img[img[x,y].X + x0, y0 + img[x,y].Y].R; //red
+                                        line[3 * x + 1] = img[img[x, y].X + x0, y0 + img[x, y].Y].G; //green
+                                        line[3 * x] = img[img[x, y].X + x0, y0 + img[x, y].Y].B; //blue
+                                    }
+                                    else
+                                    {
+                                        line[3 * x + 2] = 0; //red
+                                        line[3 * x + 1] = 0; //green
+                                        line[3 * x] = 0; //blue
+                                    }
+                                    break;
+                                }
                             case "RGB":
                                 {
                                     line[3 * x] = img[x, y].B; //blue

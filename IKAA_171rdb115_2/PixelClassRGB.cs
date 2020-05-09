@@ -9,6 +9,8 @@ namespace IKAA_171rdb115_2
         public byte G; //green
         public byte B; //blue
         public byte I; //intensity
+        public int X;
+        public int Y;
 
         public PixelClassRGB()
         {

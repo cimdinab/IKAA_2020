@@ -1283,6 +1283,12 @@ namespace IKAA_171rdb115_2
             Form2 openForm = new Form2();
             openForm.Show();
         }
+
+        private void transformationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form3 openForm = new Form3();
+            openForm.Show();
+        }
     }
 }
 
